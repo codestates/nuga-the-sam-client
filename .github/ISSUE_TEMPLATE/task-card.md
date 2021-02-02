@@ -2,14 +2,14 @@
 name: Task Card
 about: 태스크 카드입니다.
 title: "[Task] 작업 내용을 작성해 주세요 "
-labels: ''
+labels: front-end
 assignees: ''
 
 ---
 
 ### ISSUE
-- Group:  `client`, `server`, `sr`
-- Type: `bug`, `feature`, `delete`
+- Group:  `client`
+- Type: `feature`
 - Detail: fix actions from client redux
 
 ### TODO
@@ -29,5 +29,3 @@ assignees: ''
 ### Labels
 - Estimated time: `E: 1h`
 - Group : `client`, `server`
-- Sprint: `Sprint__NUMBER__`
-- Urgency: `High`, `Middle`, `Low`
