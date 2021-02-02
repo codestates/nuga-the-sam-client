@@ -28,4 +28,4 @@ assignees: ''
 
 ### Labels
 - Estimated time: `E: 1h`
-- Group : `client`, `server`
+- Group : `client`
