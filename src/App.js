@@ -6,7 +6,5 @@ function App() {
 		<div>
 			<newFights />
 		</div>
-	);
+)
 }
-
-export default App;
