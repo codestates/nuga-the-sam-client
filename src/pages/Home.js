@@ -5,9 +5,13 @@ import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+<<<<<<< HEAD
+import MakeFights from "../components/makefights.js";
+=======
 import MakeFights from "../components/MakeFights.js";
+>>>>>>> 6353fa91fbec4165012a77f75c52502972b72ca7
 import axios from "axios";
-
+import Mypage from "../components/Mypage.js";
 function Home() {
 	const [fights, setFights] = useState();
 	const [CategoryData] = useState(category.name);
@@ -56,6 +60,10 @@ function Home() {
 
 	return (
 		<>
+<<<<<<< HEAD
+			<Mypage />
+=======
+>>>>>>> 6353fa91fbec4165012a77f75c52502972b72ca7
 			<MakeFights category={CategoryData} />
 			<Category
 				category={CategoryData}
