@@ -4,7 +4,11 @@ export default function HotTopic({ FakeData }) {
 	return (
 		<div className="hot-box-container">
 			{FakeData.map((item) => {
-				return <div className="hot-box">{item.name}</div>;
+				return (
+					<div className="hot-box" key={item.id}>
+						{item.name}
+					</div>
+				);
 			})}
 		</div>
 	);

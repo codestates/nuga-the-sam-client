@@ -1,18 +1,23 @@
 import React, { useState } from "react";
 import NewFights from "./components/NewFights.js";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
-import { fakedata } from "./datas/fakedata.js";
-import HotTopic from "./components/hottopic.js";
+import HotTopic from "./components/HotTopic.js";
+import Header from "./components/Header";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Mypage from "./pages/Mypage";
+import Signup from "./pages/Signup";
 function App() {
-	const [FakeData] = useState(fakedata.items);
-
 	return (
-		<div>
-			<div className="hot-all">
-				<HotTopic FakeData={FakeData} />
-			</div>
-			<NewFights data={FakeData} />
-		</div>
+		<Router>
+			<switch>
+				<Route exact path="/" component={Home} />
+				<Route exact path="/login" component={Login} />
+				<Route exact path="/mypage" component={Mypage} />
+				<Route exact path="/signup" component={Signup} />
+			</switch>
+		</Router>
 	);
 }
 
