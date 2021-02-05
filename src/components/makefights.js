@@ -8,12 +8,13 @@ function MakeFights({ category }) {
 	const handleisFight = () => {
 		setIsFight(true);
 	};
+
 	return (
-		<div id="nav-body">
-			<span id="nav-title"></span>
+		<div id="makefights-body">
+			<span id="makefights-title"></span>
 			{isFight ? (
 				<Link to="/fights" onClick={() => handleisFight(false)}>
-					새로운 결투 신청<span id="nav-fights"></span>
+					새로운 결투 신청<span id="makefights-fights"></span>
 				</Link>
 			) : (
 				<div></div>

@@ -7,6 +7,8 @@ import Signup from "./pages/Signup.js";
 import Mypage from "./pages/mypage.js";
 import Header from "./components/Header";
 import Home from "./pages/Home.js";
+import Header from "./components/Header.js";
+
 function App() {
 	const [isLogin, setLogin] = useState(false);
 	const [userInfo, setUserInfo] = useState({});
