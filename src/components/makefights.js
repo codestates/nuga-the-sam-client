@@ -2,18 +2,19 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Nav({ category }) {
+function Makefights({ category }) {
 	const [isFight, setIsFight] = useState(true);
 
 	const handleisFight = () => {
 		setIsFight(true);
 	};
+
 	return (
-		<div id="nav-body">
-			<span id="nav-title"></span>
+		<div id="makefights-body">
+			<span id="makefights-title"></span>
 			{isFight ? (
 				<Link to="/fights" onClick={() => handleisFight(false)}>
-					새로운 결투 신청<span id="nav-fights"></span>
+					새로운 결투 신청<span id="makefights-fights"></span>
 				</Link>
 			) : (
 				<div></div>
@@ -22,4 +23,4 @@ function Nav({ category }) {
 	);
 }
 
-export default Nav;
+export default Makefights;

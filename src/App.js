@@ -6,9 +6,12 @@ import Login from "./pages/Login.js";
 import Signup from "./pages/Signup.js";
 import Mypage from "./pages/mypage.js";
 import Home from "./pages/Home.js";
+import Header from "./components/Header.js";
+
 function App() {
 	return (
 		<Router>
+			<Route exact component={Header} />
 			<Switch>
 				<Route exact path="/" component={Home} />
 				<Route exact path="/login" component={Login} />

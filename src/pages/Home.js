@@ -13,7 +13,6 @@ function Home() {
 	const [fights, setFights] = useState();
 	const [CategoryData] = useState(category.name);
 	const [hotfights, setHotFights] = useState();
-	const [isLogin, setLogin] = useState(false);
 
 	const getDataAndRender = async () => {
 		const result = await axios.get(`https://s.nugathesam.com/fights`);
@@ -58,8 +57,6 @@ function Home() {
 
 	return (
 		<>
-			<Header isLogin={isLogin} />
-			<div className="hot-all"></div>
 			<Nav category={CategoryData} />
 			<Category
 				category={CategoryData}

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 function Header({ isLogin }) {
 	console.log(isLogin);
+
 	return (
 		<div id="header-body">
 			<span id="title">누가 더 쎔?</span>
