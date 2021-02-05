@@ -1,34 +1,52 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
-function Login() {
-	const [userId, setUserId] = useState("");
+function Login({ loginHandler, issueAccessToken, history }) {
+	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [errorMessage, setError] = useState("");
 
-	const onChangeId = (e) => {
-		setUserId(e.target.value);
+	const onChangeEmail = (e) => {
+		setEmail(e.target.value);
 		console.log(e.target.value);
 	};
 
 	const onChangePass = (e) => {
-		console.log(password);
+		console.log(e.target.value);
 		setPassword(e.target.value);
 	};
 
-	const handleClick = (e) => {
-		console.log(`id :${userId} password :${password} `);
+	const loginRequestHandler = () => {
+		const url = "https://s.nugathesam.com/users/login";
+		axios
+			.post(url, { email: email, password: password })
+			.then((res) => {
+				console.log(res);
+				if (errorMessage) {
+					setError("");
+					loginHandler(true);
+					issueAccessToken(res.data.token);
+					history.push("/");
+				} else {
+					loginHandler(true);
+					issueAccessToken(res.data.token);
+					history.push("/");
+				}
+			})
+			.catch((err) => {
+				setError("이메일을 또는 비밀번호를 확인하세요");
+			});
 	};
 
 	return (
 		<div>
 			<div>
 				<input
-					type="test"
-					value={userId}
-					onChange={onChangeId}
-					placeholder="아이디"
+					type="text"
+					value={email}
+					onChange={onChangeEmail}
+					placeholder="이메일"
 				/>
 				<br />
 				<input
@@ -38,12 +56,13 @@ function Login() {
 					placeholder="비밀번호"
 				/>
 				<br />
-				<button onClick={handleClick}>로그인</button>
+				<button onClick={loginRequestHandler}>로그인</button>
 				<br />
+				{errorMessage && <div>{errorMessage}</div>}
 				<Link to="signup">회원가입</Link>
 			</div>
 		</div>
 	);
 }
 
-export default Login;
+export default withRouter(Login);

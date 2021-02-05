@@ -5,7 +5,7 @@ import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "../components/MakeFights.js";
+import MakeFights from "../components/MakeFights.js";
 import axios from "axios";
 
 function Home() {
@@ -56,7 +56,7 @@ function Home() {
 
 	return (
 		<>
-			<Nav category={CategoryData} />
+			<MakeFights category={CategoryData} />
 			<Category
 				category={CategoryData}
 				handleCategoryClick={handleCategoryClick}

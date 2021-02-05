@@ -7,16 +7,25 @@ import Signup from "./pages/Signup.js";
 import Mypage from "./pages/mypage.js";
 import Header from "./components/Header";
 import Home from "./pages/Home.js";
-import Header from "./components/Header.js";
+import axios from "axios";
 
 function App() {
 	const [isLogin, setLogin] = useState(false);
 	const [userInfo, setUserInfo] = useState({});
 	const [accessToken, setToken] = useState("");
+
+	const loginHandler = () => {
+		setLogin(true);
+	};
+
+	const issueAccessToken = (token) => {
+		setToken(token);
+	};
+
 	return (
 		<>
 			<Router>
-				<Header />
+				<Header isLogin={isLogin} />
 				<Switch>
 					<Route
 						exact
@@ -29,7 +38,12 @@ function App() {
 						exact
 						path="/login"
 						render={() => {
-							return <Login />;
+							return (
+								<Login
+									loginHandler={loginHandler}
+									issueAccessToken={issueAccessToken}
+								/>
+							);
 						}}
 					/>
 					<Route
