@@ -5,9 +5,8 @@ import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "../components/makefights.js";
+import Nav from "../components/MakeFights.js";
 import axios from "axios";
-import Header from "../components/Header";
 
 function Home() {
 	const [fights, setFights] = useState();

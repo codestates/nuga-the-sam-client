@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Makefights({ category }) {
+function MakeFights({ category }) {
 	const [isFight, setIsFight] = useState(true);
 
 	const handleisFight = () => {
@@ -23,4 +23,4 @@ function Makefights({ category }) {
 	);
 }
 
-export default Makefights;
+export default MakeFights;
