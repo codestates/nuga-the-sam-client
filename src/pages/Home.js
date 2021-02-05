@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+import React, { useState } from "react";
+import { fakedata } from "../datas/fakedata.js";
+import Header from "../components/Header";
+import HotTopic from "../components/HotTopic";
+import NewFights from "../components/NewFights";
+function Home() {
+	const [FakeData] = useState(fakedata.items);
+	const [isLogin, setLogin] = useState(false);
+	return (
+		<>
+			<Header isLogin={isLogin} />
+			<div className="hot-all">
+				<HotTopic FakeData={FakeData} />
+			</div>
+			<NewFights data={FakeData} />
+		</>
+	);
+}
+=======
 import React, { useEffect, useState } from "react";
 import NewFights from "../components/NewFights.js";
 import "../App.css";
@@ -68,4 +88,5 @@ function Home() {
 	);
 }
 
+>>>>>>> dafd05b4db61cad2b5d425c6e78f480b1b98d9f7
 export default Home;
