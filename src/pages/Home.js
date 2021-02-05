@@ -5,9 +5,9 @@ import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "../components/MakeFights.js";
+import MakeFights from "../components/makefights.js";
 import axios from "axios";
-
+import Mypage from "../components/Mypage.js";
 function Home() {
 	const [fights, setFights] = useState();
 	const [CategoryData] = useState(category.name);
@@ -56,7 +56,8 @@ function Home() {
 
 	return (
 		<>
-			<Nav category={CategoryData} />
+			<Mypage />
+			<MakeFights category={CategoryData} />
 			<Category
 				category={CategoryData}
 				handleCategoryClick={handleCategoryClick}

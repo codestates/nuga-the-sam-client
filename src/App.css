@@ -3,18 +3,23 @@ body {
 	padding: 0;
 	text-align: center;
 }
+.moreButton {
+	position: absolute;
+	margin: 0 auto;
+}
 #fights-list-container {
 	display: table;
 	margin: 0 auto;
 	width: 60%;
-	height: calc(100vh - 4rem);
+	height: 100vh;
 }
 
 #fights-list-body {
 	border: solid #7a62acde;
 	display: table-cell;
 	width: 100%;
-	page-break-before: auto;
+	height: 100%;
+	overflow: scroll;
 }
 
 #fights-list-title {

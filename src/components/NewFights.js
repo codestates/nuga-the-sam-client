@@ -1,15 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function NewFights({ fights, handleNewFightClick }) {
 	console.log(fights);
+	const [count, setcount] = useState(9);
+
+	const handleCount = () => {
+		setcount(count + 9);
+	};
 	return (
 		<div id="fights-list-container">
 			<div id="fights-list-body">
 				<div id="fights-list-title">이제 막 싸우는 중</div>
+				<div></div>
 				{!fights ? (
 					<div className="Loding">로딩중....</div>
 				) : (
-					fights.map((fights) => (
+					fights.slice(0, count).map((fights) => (
 						<button
 							className="newFight-name"
 							key={fights.id}
@@ -25,6 +31,9 @@ export default function NewFights({ fights, handleNewFightClick }) {
 						</button>
 					))
 				)}
+				<button className="moreButton" onClick={() => handleCount()}>
+					더 보기{" "}
+				</button>
 			</div>
 		</div>
 	);
