@@ -5,9 +5,14 @@ function Header({ isLogin }) {
 	console.log(isLogin);
 	return (
 		<div id="header-body">
-			<span id="title">누가 더 쎔?</span>
+			<Link to="/" id="title">
+				누가 더 쎔?
+			</Link>
 			{isLogin ? (
-				<Link to="/mypage">마이페이지</Link>
+				<div>
+					<Link to="/mypage">마이페이지</Link>
+					<button>로그아웃</button>
+				</div>
 			) : (
 				<Link to="/login">로그인</Link>
 			)}
