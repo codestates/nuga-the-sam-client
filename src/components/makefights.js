@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-function Nav({ category }) {
+function MakeFights({ category }) {
 	const [isFight, setIsFight] = useState(true);
 
 	const handleisFight = () => {
@@ -22,4 +22,4 @@ function Nav({ category }) {
 	);
 }
 
-export default Nav;
+export default MakeFights;

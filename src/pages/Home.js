@@ -5,15 +5,13 @@ import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "../components/makefights.js";
+import Nav from "../components/MakeFights.js";
 import axios from "axios";
-import Header from "../components/Header";
 
 function Home() {
 	const [fights, setFights] = useState();
 	const [CategoryData] = useState(category.name);
 	const [hotfights, setHotFights] = useState();
-	const [isLogin, setLogin] = useState(false);
 
 	const getDataAndRender = async () => {
 		const result = await axios.get(`https://s.nugathesam.com/fights`);
@@ -58,8 +56,6 @@ function Home() {
 
 	return (
 		<>
-			<Header isLogin={isLogin} />
-			<div className="hot-all"></div>
 			<Nav category={CategoryData} />
 			<Category
 				category={CategoryData}
