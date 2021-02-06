@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Header({ isLogin }) {
-	console.log(isLogin);
 
 	return (
 		<div id="header-body">

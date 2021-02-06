@@ -50,7 +50,7 @@ function App() {
 						exact
 						path="/mypage"
 						render={() => {
-							return <Mypage />;
+							return <Mypage isLogin={isLogin} />;
 						}}
 					/>
 					<Route
@@ -64,7 +64,7 @@ function App() {
 						exact
 						path="/fights"
 						render={() => {
-							return <Fights />;
+							return <Fights accessToken={accessToken} />;
 						}}
 					/>
 				</Switch>
