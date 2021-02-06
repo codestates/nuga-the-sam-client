@@ -1,10 +1,14 @@
 // import React from "react";
 import React, { useState } from "react";
+import axios from "axios";
+import ModalFight from "./ModalFight.js";
 
-function Fights({ category }) {
+function Fights({ accessToken }) {
 	const [leftFights, setLeftFights] = useState(" ");
 	const [rightFights, setRightFights] = useState(" ");
 	const [checkedCategory, setCheckedCategory] = useState("");
+	const [fightErrorMessage, setfightErrorMessage] = useState("");
+	const [checkSend, setcheckSend] = useState(false);
 
 	const handleFightsCategoty = (e) => {
 		setCheckedCategory(e.target.value);
@@ -19,8 +23,41 @@ function Fights({ category }) {
 		console.log(rightFights);
 	};
 
+	// const handleCheckSend = () => {
+	// 	setcheckSend(false);
+	// };
+
 	const submitButton = () => {
-		console.log(checkedCategory, leftFights, rightFights);
+		if (leftFights === "" || rightFights === "" || checkedCategory === "") {
+			setfightErrorMessage("모든 항목을 입력하세요!");
+		} else {
+			
+			axios
+				.post(
+					`https://s.nugathesam.com/fights`,
+					{
+						// accessToken: accessToken,
+						left: leftFights,
+						right: rightFights,
+						category: checkedCategory,
+					},
+					{ headers: { Authorization: `Bearer ${accessToken}` } },
+				)
+				.then((res) => {
+					setcheckSend(true);
+					console.log(res);
+					if (fightErrorMessage) {
+						setfightErrorMessage("");
+						// history.push("/");
+					} else {
+						// history.push("/");
+					}
+				})
+				.catch((err) => {
+					setfightErrorMessage("무엇가 잘못됐다.");
+				});
+			console.log(checkedCategory, leftFights, rightFights);
+		}
 	};
 
 	return (
@@ -123,9 +160,12 @@ function Fights({ category }) {
 						/>{" "}
 						철학
 					</div>
+					<br></br>
 				</div>
 			</div>
 
+			<div className="fightErrorMessage">{fightErrorMessage}</div>
+			<br></br>
 			<button
 				className="submitButton"
 				onClick={(e) => {
@@ -134,6 +174,15 @@ function Fights({ category }) {
 			>
 				등록
 			</button>
+			{checkSend ? (
+				<ModalFight
+					setcheckSend={setcheckSend}
+					leftFights={leftFights}
+					rightFights={rightFights}
+				></ModalFight>
+			) : (
+				<div></div>
+			)}
 		</div>
 	);
 }

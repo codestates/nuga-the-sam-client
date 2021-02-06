@@ -1,14 +1,15 @@
 import React from "react";
 
 function MyPage({ userInfo, myFights, myComments }) {
+	// const chang;
 	return (
 		<div>
 			<div id="mypage-userInfo-container">
 				<div id="mypage-userInfo-body">
 					<div id="mypage-userInfo-title">My Profile</div>
-
 					<div className="mypage-userInfo">rnrel11@naver.com</div>
-					<div className="mypage-userInfo">코공코공</div>
+					<div className="mypage-userInfo-">코공코공</div>
+					<button className="mypage-userInfo-changeButton">닉네임 변경</button>
 					<div className="mypage-userInfo">2021년 2월 4일 </div>
 				</div>
 			</div>

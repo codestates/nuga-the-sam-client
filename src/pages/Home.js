@@ -46,7 +46,10 @@ function Home() {
 		axios
 			.get(`https:s.nugathesam.com/fights/category/${categoryname}`)
 			.then((data) => {
-				setFights(data.data);
+				const sortID2 = data.data.sort(function (a, b) {
+					return a.id < b.id ? 1 : -1;
+				});
+				setFights(sortID2);
 			});
 	};
 
