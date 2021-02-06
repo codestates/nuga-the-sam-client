@@ -17,7 +17,10 @@ function App() {
 	const loginHandler = () => {
 		setLogin(true);
 	};
-
+	const logoutHandler = () => {
+		setLogin(false);
+		setToken("");
+	};
 	const issueAccessToken = (token) => {
 		setToken(token);
 	};
@@ -25,7 +28,7 @@ function App() {
 	return (
 		<>
 			<Router>
-				<Header isLogin={isLogin} />
+				<Header isLogin={isLogin} logoutHandler={logoutHandler} />
 				<Switch>
 					<Route
 						exact
