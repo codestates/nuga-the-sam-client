@@ -1,0 +1,26 @@
+#header-container {
+	border: solid #7a62acde;
+	height: 30px;
+}
+#header-body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+
+#nugathesam-title {
+	color: teal;
+}
+
+#login-button {
+	color: rgb(13, 239, 255);
+}
+
+#mypage-title {
+	color: rgb(13, 239, 255);
+}
+
+#logout-button {
+	color: rgb(13, 239, 255);
+}

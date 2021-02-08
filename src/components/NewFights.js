@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "../style/NewFights.css";
 export default function NewFights({ fights, handleNewFightClick }) {
 	const [count, setcount] = useState(9);
 
@@ -19,19 +20,19 @@ export default function NewFights({ fights, handleNewFightClick }) {
 					fights.slice(0, count).map((fights) => (
 						<Link to={`/getfight/${fights.id}`}>
 							<button className="newFight-name" key={fights.id}>
-								{fights.left}
-								<span> vs </span>
-								{fights.right}
+								<span className="fight-title">{fights.left}</span>
+								<span className="newFight-vs"> vs </span>
+								<span className="fight-title">{fights.right}</span>
 								<div></div>
-								<span>{fights.left_vote_count}</span>
+								<span className="fight-votes">{fights.left_vote_count}</span>
 								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span>{fights.right_vote_count}</span>
+								<span className="fight-votes"> {fights.right_vote_count}</span>
 							</button>
 						</Link>
 					))
 				)}
 				<button className="moreButton" onClick={() => handleCount()}>
-					더 보기{" "}
+					{"더 보기"}
 				</button>
 			</div>
 		</div>

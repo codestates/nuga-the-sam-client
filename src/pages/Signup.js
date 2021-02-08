@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import axios from "axios";
+import "../style/Signup.css";
 function Signup({ history }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
