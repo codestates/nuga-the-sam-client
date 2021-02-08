@@ -4,29 +4,40 @@ import axios from "axios";
 import ModalFight from "./ModalFight.js";
 
 function Fights({ accessToken }) {
+	//* 왼쪽 제목
 	const [leftFights, setLeftFights] = useState(" ");
+	//* 오른쪽 제목
 	const [rightFights, setRightFights] = useState(" ");
+	//* 카테고리 체크
 	const [checkedCategory, setCheckedCategory] = useState("");
+	//* 정상적으로 포스트 완료시 뜨는 메시지
 	const [fightErrorMessage, setfightErrorMessage] = useState("");
-	const [checkSend, setcheckSend] = useState(false);
+	//* 제대로 보냈을 경우 뜨는 모달창
+	const [checkSendModal, setcheckSendModal] = useState(false);
 
+	//* 카테고리 클릭시 카테고리 이름 저장
 	const handleFightsCategoty = (e) => {
 		setCheckedCategory(e.target.value);
 		console.log(e.target.value);
 	};
+	//* 왼쪽 제목 저장
 	const handleLeftFights = (e) => {
 		setLeftFights(e.target.value);
 		console.log(leftFights);
 	};
+	//* 오른쪽 제목 저장
 	const handleRightFights = (e) => {
 		setRightFights(e.target.value);
 		console.log(rightFights);
 	};
 
+	//* 등록 버튼 클릭시
 	const submitButton = () => {
+		//* 모든 항목 입력했는지 검사
 		if (leftFights === "" || rightFights === "" || checkedCategory === "") {
 			setfightErrorMessage("모든 항목을 입력하세요!");
 		} else {
+			//* 포스트 요청
 			axios
 				.post(
 					`https://s.nugathesam.com/fights`,
@@ -38,9 +49,10 @@ function Fights({ accessToken }) {
 					},
 					{ headers: { Authorization: `Bearer ${accessToken}` } },
 				)
+				//* 성공적으로 포스트를 보냈을 시 성공 모달창 띄우기
 				.then((res) => {
-					setcheckSend(true);
-					console.log(res);
+					setcheckSendModal(true);
+
 					if (fightErrorMessage) {
 						setfightErrorMessage("");
 						// history.push("/");
@@ -48,10 +60,10 @@ function Fights({ accessToken }) {
 						// history.push("/");
 					}
 				})
+				//! 서버 에러
 				.catch((err) => {
 					setfightErrorMessage("무엇가 잘못됐다.");
 				});
-			console.log(checkedCategory, leftFights, rightFights);
 		}
 	};
 
@@ -168,9 +180,9 @@ function Fights({ accessToken }) {
 			>
 				등록
 			</button>
-			{checkSend ? (
+			{checkSendModal ? (
 				<ModalFight
-					setcheckSend={setcheckSend}
+					setcheckSendModal={setcheckSendModal}
 					leftFights={leftFights}
 					rightFights={rightFights}
 				></ModalFight>

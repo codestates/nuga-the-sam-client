@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Mypage({ isLogin }) {
+export default function Mypage({}) {
 	return (
 		<div>
 			<Link to="/mypage">

@@ -1,6 +1,6 @@
 // import React, { useState } from "react";
 import { Link } from "react-router-dom";
-function ModalFight({ setcheckSend, leftFights, rightFights }) {
+function ModalFight({ setcheckSendModal, leftFights, rightFights }) {
 	return (
 		<>
 			<div className="ModalFight">
@@ -13,7 +13,7 @@ function ModalFight({ setcheckSend, leftFights, rightFights }) {
 					<Link to="/" id="title">
 						<button
 							className="ModalFightButton"
-							onClick={() => setcheckSend(false)}
+							onClick={() => setcheckSendModal(false)}
 						>
 							닫기
 						</button>
