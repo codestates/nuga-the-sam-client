@@ -106,7 +106,7 @@ function App() {
 						exact
 						path="/GetFight"
 						render={() => {
-							return <GetFight accessToken={accessToken} />;
+							return <GetFight accessToken={accessToken} fightId={fightId} />;
 						}}
 					/>
 				</Switch>

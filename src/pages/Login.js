@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import Loading from "../components/Loading";
+import "../style/Login.css";
 function Login({ loginHandler, issueAccessToken, history }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
