@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
+import ChangeNickNmaeModal from "./ChangeNickNameModal.js";
+function MyPage({ userInfo, myFights, myComments, accessToken }) {
+	const [ischangeNick, setisChangeNick] = useState(false);
 
-function MyPage({ userInfo, myFights, myComments }) {
-	// const chang;
+	const changeButtonHandler = () => {
+		setisChangeNick(true);
+		console.log(userInfo);
+	};
+
 	return (
 		<div>
 			<div id="mypage-userInfo-container">
@@ -9,11 +15,25 @@ function MyPage({ userInfo, myFights, myComments }) {
 					<div id="mypage-userInfo-title">My Profile</div>
 					<div className="mypage-userInfo">rnrel11@naver.com</div>
 					<div className="mypage-userInfo-">코공코공</div>
-					<button className="mypage-userInfo-changeButton">닉네임 변경</button>
+					<button
+						className="mypage-userInfo-changeButton"
+						onClick={() => {
+							changeButtonHandler(true);
+						}}
+					>
+						닉네임 변경
+					</button>
+					{ischangeNick ? (
+						<ChangeNickNmaeModal
+							setisChangeNick={setisChangeNick}
+							accessToken={accessToken}
+						></ChangeNickNmaeModal>
+					) : (
+						<div></div>
+					)}
 					<div className="mypage-userInfo">2021년 2월 4일 </div>
 				</div>
 			</div>
-
 			<div id="mypage-myFights-container">
 				<div id="mypage-myFights-body">
 					<div id="mypage-myFights-title">My Fights</div>
@@ -22,7 +42,6 @@ function MyPage({ userInfo, myFights, myComments }) {
 					<div className="mypage-userInfo">사자 vs 호랑이 </div>
 				</div>
 			</div>
-
 			<div id="mypage-myComments-container">
 				<div id="mypage-myComments-body">
 					<div id="mypage-myComments-title">My Comments</div>

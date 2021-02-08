@@ -23,6 +23,16 @@ function App() {
 	};
 	const issueAccessToken = (token) => {
 		setToken(token);
+		console.log(token);
+
+		axios
+			.get("https://s.nugathesam.com/users", {
+				headers: { Authorization: `Bearer ${accessToken}` },
+			})
+			.then((res) => console.log(res))
+			.catch((err) => {
+				console.log("무언가 잘못됐다.");
+			});
 	};
 
 	return (
@@ -53,7 +63,7 @@ function App() {
 						exact
 						path="/mypage"
 						render={() => {
-							return <Mypage isLogin={isLogin} />;
+							return <Mypage isLogin={isLogin} accessToken={accessToken} />;
 						}}
 					/>
 					<Route
