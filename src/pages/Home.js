@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import NewFights from "../components/NewFights.js";
 import "../App.css";
+import { withRouter } from "react-router-dom";
+import axios from "axios";
+import NewFights from "../components/NewFights.js";
 import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
-// import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MakeFights from "../components/makefights.js";
-import axios from "axios";
-// import Mypage from "../components/Mypage.js";
-function Home() {
+
+function Home({ accessToken, history, handleNewFightClick }) {
 	const [fights, setFights] = useState();
 	const [CategoryData] = useState(category.name);
 	const [hotfights, setHotFights] = useState();
@@ -37,19 +37,6 @@ function Home() {
 		getDataAndRender();
 		getHotDataAndRender();
 	}, []);
-
-	const handleNewFightClick = (fightsId) => {
-		console.log(fightsId);
-		axios
-			.get(
-				``,
-				{
-					fights: fightsId,
-				},
-				// { headers: { Authorization: `Bearer ${accessToken}` } },
-			)
-			.then((res) => {});
-	};
 
 	const handleCategoryClick = (categoryname) => {
 		axios
@@ -80,4 +67,4 @@ function Home() {
 	);
 }
 
-export default Home;
+export default withRouter(Home);

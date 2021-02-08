@@ -8,11 +8,13 @@ import Mypage from "./pages/mypage.js";
 import Header from "./components/Header";
 import Home from "./pages/Home.js";
 import axios from "axios";
+import GetFight from "./pages/GetFight.js";
 
 function App() {
 	const [isLogin, setLogin] = useState(false);
 	const [userInfo, setUserInfo] = useState({});
 	const [accessToken, setToken] = useState("");
+	const [fightId, setFightId] = useState("");
 
 	const loginHandler = () => {
 		setLogin(true);
@@ -20,6 +22,10 @@ function App() {
 	const logoutHandler = () => {
 		setLogin(false);
 		setToken("");
+	};
+
+	const handleNewFightClick = (fightId) => {
+		setFightId(fightId);
 	};
 	const issueAccessToken = (token) => {
 		setToken(token);
@@ -47,7 +53,12 @@ function App() {
 						exact
 						path="/"
 						render={() => {
-							return <Home />;
+							return (
+								<Home
+									accessToken={accessToken}
+									handleNewFightClick={handleNewFightClick}
+								/>
+							);
 						}}
 					/>
 					<Route
@@ -76,6 +87,7 @@ function App() {
 							);
 						}}
 					/>
+
 					<Route
 						exact
 						path="/signup"
@@ -88,6 +100,13 @@ function App() {
 						path="/fights"
 						render={() => {
 							return <Fights accessToken={accessToken} />;
+						}}
+					/>
+					<Route
+						exact
+						path="/GetFight"
+						render={() => {
+							return <GetFight accessToken={accessToken} />;
 						}}
 					/>
 				</Switch>

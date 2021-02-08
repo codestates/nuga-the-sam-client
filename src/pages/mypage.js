@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import ChangeNickNmaeModal from "./ChangeNickNameModal.js";
 function MyPage({ userInfo, myFights, myComments, accessToken, setUserInfo }) {
+	//* 닉네임 변경하는 모달창 상태
 	const [ischangeNick, setisChangeNick] = useState(false);
 
+	//* 닉네임 변경 클릭시 ischangeNick가 True로 되면서 닉네임 변경할 모달창이 나옴
 	const changeButtonHandler = () => {
 		setisChangeNick(true);
-		console.log(accessToken);
-		console.log(userInfo);
 	};
 
 	return (

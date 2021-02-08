@@ -11,6 +11,7 @@ function Login({ loginHandler, issueAccessToken, history }) {
 		setEmail(e.target.value);
 		console.log(e.target.value);
 	};
+
 	const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&state=state_parameter_passthrough_value&
 redirect_uri=http://localhost:3000/login&response_type=code&client_id=103482969021-9v5buae9qqmjb71n9geuprb73fe1c013.apps.googleusercontent.com`;
 
