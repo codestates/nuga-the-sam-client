@@ -35,18 +35,20 @@ function GetFight(props) {
 			{isLoad ? (
 				<Loading />
 			) : (
-				<div className="fightContainer">
-					<div className="leftContainer">
-						<div className="leftFight">{fight.left}</div>
-						<div className="leftVote">{fight.left_vote_count}</div>
+				<div>
+					<div className="fightContainer">
+						<div className="leftContainer">
+							<div className="leftFight">{fight.left}</div>
+							<div className="leftVote">{fight.left_vote_count}</div>
+						</div>
+						<div className="vs">vs</div>
+						<div className="rightContainer">
+							<div className="rightFight">{fight.right}</div>
+							<div className="rightVote">{fight.right_vote_count}</div>
+						</div>
 					</div>
-					<div className="vs">vs</div>
-					<div className="rightContainer">
-						<div className="rightFight">{fight.right}</div>
-						<div className="rightVote">{fight.right_vote_count}</div>
-					</div>
+					<ViewComment fight={fight} />
 				</div>
-
 			)}
 		</div>
 	);
