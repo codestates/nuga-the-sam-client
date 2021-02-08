@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import ModalFight from "./ModalFight.js";
+import "../style/Fights.css";
 
 function Fights({ accessToken }) {
 	//* 왼쪽 제목
@@ -68,7 +69,7 @@ function Fights({ accessToken }) {
 	};
 
 	return (
-		<div>
+		<>
 			<div id="fights-post-container">
 				<div id="fights-post-body">
 					<div id="fights-post-title">새로운 결투</div>
@@ -93,82 +94,83 @@ function Fights({ accessToken }) {
 							handleRightFights(e);
 						}}
 					></input>
-					<div id="fights-post-category-container">
-						<div id="fights-post-category-title">카테고리 선택</div>
-						<input
-							type="radio"
-							value="애니메이션"
-							name="category"
-							className="post-category"
-							onClick={(e) => {
-								handleFightsCategoty(e);
-							}}
-						/>{" "}
-						애니메이션
-						<input
-							type="radio"
-							value="음식"
-							name="category"
-							className="post-category"
-							onClick={(e) => {
-								handleFightsCategoty(e);
-							}}
-						/>{" "}
-						음식
-						<input
-							type="radio"
-							value="일상"
-							name="category"
-							className="post-category"
-							onClick={(e) => {
-								handleFightsCategoty(e);
-							}}
-						/>{" "}
-						일상
-						<input
-							type="radio"
-							value="게임"
-							name="category"
-							className="post-category"
-							onClick={(e) => {
-								handleFightsCategoty(e);
-							}}
-						/>{" "}
-						게임
-						<input
-							type="radio"
-							value="소설"
-							name="category"
-							className="post-category"
-							onClick={(e) => {
-								handleFightsCategoty(e);
-							}}
-						/>{" "}
-						소설
-						<input
-							type="radio"
-							value="스포츠"
-							name="category"
-							className="post-category"
-							onClick={(e) => {
-								handleFightsCategoty(e);
-							}}
-						/>{" "}
-						스포츠
-						<input
-							type="radio"
-							value="철학"
-							name="category"
-							className="post-category"
-							onClick={(e) => {
-								handleFightsCategoty(e);
-							}}
-						/>{" "}
-						철학
-					</div>
-					<br></br>
 				</div>
 			</div>
+
+			<div id="fights-post-category-container">
+				<div id="fights-post-category-title">카테고리 선택</div>
+				<input
+					type="radio"
+					value="애니메이션"
+					name="category"
+					className="post-category"
+					onClick={(e) => {
+						handleFightsCategoty(e);
+					}}
+				/>
+				{"애니메이션"}
+				<input
+					type="radio"
+					value="음식"
+					name="category"
+					className="post-category"
+					onClick={(e) => {
+						handleFightsCategoty(e);
+					}}
+				/>
+				{"음식"}
+				<input
+					type="radio"
+					value="일상"
+					name="category"
+					className="post-category"
+					onClick={(e) => {
+						handleFightsCategoty(e);
+					}}
+				/>
+				{"일상"}
+				<input
+					type="radio"
+					value="게임"
+					name="category"
+					className="post-category"
+					onClick={(e) => {
+						handleFightsCategoty(e);
+					}}
+				/>
+				{"게임"}
+				<input
+					type="radio"
+					value="소설"
+					name="category"
+					className="post-category"
+					onClick={(e) => {
+						handleFightsCategoty(e);
+					}}
+				/>
+				{"소설"}
+				<input
+					type="radio"
+					value="스포츠"
+					name="category"
+					className="post-category"
+					onClick={(e) => {
+						handleFightsCategoty(e);
+					}}
+				/>
+				{"스포츠"}
+				<input
+					type="radio"
+					value="철학"
+					name="category"
+					className="post-category"
+					onClick={(e) => {
+						handleFightsCategoty(e);
+					}}
+				/>
+				{"철학"}
+			</div>
+			<br></br>
 
 			<div className="fightErrorMessage">{fightErrorMessage}</div>
 			<br></br>
@@ -189,7 +191,7 @@ function Fights({ accessToken }) {
 			) : (
 				<div></div>
 			)}
-		</div>
+		</>
 	);
 }
 

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import "../style/ChangeNickNameModal.css";
 import { withRouter } from "react-router-dom";
 
 function ChangeNickNameModal({
@@ -70,30 +71,34 @@ function ChangeNickNameModal({
 	};
 
 	return (
-		<div className="ChangeNickNameModal">
-			{!isLodingnewNickNmae ? (
-				<div>
-					<input
-						type="text"
-						placeholder="새로운 닉네임을 정해보자"
-						value={newNickNmae}
-						onChange={(e) => handleNewNickNmae(e)}
-					></input>
-					<button onClick={() => changeNickName()}> 확인</button>
-				</div>
-			) : (
-				<>
-					<div>{nickNameError}</div>
-					<button
-						onClick={() => {
-							setisLodingnewNickNmae(false);
-							setisChangeNick(false);
-						}}
-					>
-						확인
-					</button>
-				</>
-			)}
+		<div clssName="ChangeNickNameModal-container">
+			<div className="ChangeNickNameModal-body">
+				{!isLodingnewNickNmae ? (
+					<div>
+						<input
+							className="ChangeNickNameBox"
+							type="text"
+							placeholder="새로운 닉네임을 정해보자"
+							value={newNickNmae}
+							onChange={(e) => handleNewNickNmae(e)}
+						></input>
+						<button onClick={() => changeNickName()}> 확인</button>
+					</div>
+				) : (
+					<>
+						<div className="nickNameError">{nickNameError}</div>
+						<button
+							className="ChangeNickNameButton"
+							onClick={() => {
+								setisLodingnewNickNmae(false);
+								setisChangeNick(false);
+							}}
+						>
+							확인
+						</button>
+					</>
+				)}
+			</div>
 		</div>
 	);
 }

@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import ViewComment from "../components/ViewComment";
 
-function GetFight({ fightId }) {
+function GetFight({ accessToken, fightId }) {
 	const [fight, setfight] = useState();
 
 	const fightHandler = (fightId) => {
@@ -11,6 +12,7 @@ function GetFight({ fightId }) {
 	return (
 		<>
 			<div>{fightId}</div>
+			<ViewComment accessToken={accessToken} fightId={fightId} />
 		</>
 	);
 }

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../style/Category.css";
 export default function Category({
 	category,
 	handleCategoryClick,

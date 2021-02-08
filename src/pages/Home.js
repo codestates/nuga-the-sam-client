@@ -7,6 +7,7 @@ import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
 import MakeFights from "../components/makefights.js";
+import ViewComment from "../components/ViewComment";
 
 function Home({ accessToken, history, handleNewFightClick }) {
 	const [fights, setFights] = useState();
@@ -63,6 +64,8 @@ function Home({ accessToken, history, handleNewFightClick }) {
 			/>
 			<HotFights hotfights={hotfights} />
 			<NewFights fights={fights} handleNewFightClick={handleNewFightClick} />
+
+			<ViewComment></ViewComment>
 		</>
 	);
 }
