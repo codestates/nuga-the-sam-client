@@ -17,12 +17,8 @@ export default function NewFights({ fights, handleNewFightClick }) {
 					<div className="Loding">로딩중....</div>
 				) : (
 					fights.slice(0, count).map((fights) => (
-						<Link to="/GetFight">
-							<button
-								className="newFight-name"
-								key={fights.id}
-								onClick={(e) => handleNewFightClick(fights.id)}
-							>
+						<Link to={`/getfight/${fights.id}`}>
+							<button className="newFight-name" key={fights.id}>
 								{fights.left}
 								<span> vs </span>
 								{fights.right}

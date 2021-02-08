@@ -14,7 +14,6 @@ function App() {
 	const [isLogin, setLogin] = useState(false);
 	const [userInfo, setUserInfo] = useState({});
 	const [accessToken, setToken] = useState("");
-	const [fightId, setFightId] = useState("");
 
 	const loginHandler = () => {
 		setLogin(true);
@@ -24,9 +23,6 @@ function App() {
 		setToken("");
 	};
 
-	const handleNewFightClick = (fightId) => {
-		setFightId(fightId);
-	};
 	const issueAccessToken = (token) => {
 		setToken(token);
 
@@ -53,12 +49,7 @@ function App() {
 						exact
 						path="/"
 						render={() => {
-							return (
-								<Home
-									accessToken={accessToken}
-									handleNewFightClick={handleNewFightClick}
-								/>
-							);
+							return <Home accessToken={accessToken} />;
 						}}
 					/>
 					<Route
@@ -104,7 +95,7 @@ function App() {
 					/>
 					<Route
 						exact
-						path="/GetFight"
+						path="/getfight/:id"
 						render={() => {
 							return <GetFight accessToken={accessToken} />;
 						}}
