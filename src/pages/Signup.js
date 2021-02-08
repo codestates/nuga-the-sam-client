@@ -93,6 +93,9 @@ function Signup({ history }) {
 				setReviewNicknameError("중복된 닉네임입니다.");
 			});
 	};
+	const closeModal = () => {
+		history.push("/");
+	};
 
 	//! 회원가입 버튼
 	const handleSignup = () => {
@@ -141,58 +144,63 @@ function Signup({ history }) {
 		}
 	};
 	return (
-		<div>
-			<h1>회원가입</h1>
-			<form onSubmit={(e) => e.preventDefault()}>
-				<div>
-					<span>이메일</span>
-					<input onChange={onChangeEmail} placeholder="이메일양식작성바람" />
-					{checkEmail ? (
-						<span>사용가능한 이메일입니다.</span>
-					) : (
-						<span>사용불가능한 이메일입니다.</span>
-					)}
-					<button onClick={serverCheckEmail}>중복확인</button>
-					{reviewEmail && <span>참</span>}
-					{reviewEmailError && <span>거짓</span>}
+		<div className="whiteBackground">
+			<div className="signUpModal">
+				<div className="signUpHeader">회원가입</div>
+				<form className="signUpContents" onSubmit={(e) => e.preventDefault()}>
+					<div>
+						<span>이메일</span>
+						<input onChange={onChangeEmail} placeholder="이메일양식작성바람" />
+						{checkEmail ? (
+							<span>사용가능한 이메일입니다.</span>
+						) : (
+							<span>사용불가능한 이메일입니다.</span>
+						)}
+						<button onClick={serverCheckEmail}>중복확인</button>
+						{reviewEmail && <span>가능</span>}
+						{reviewEmailError && <span>중복</span>}
+					</div>
+					<div>
+						<span>별명</span>
+						<input onChange={onChangeNickname} placeholder="님별명무엇?" />
+						<button onClick={serverCheckNickname}>중복확인</button>
+						{reviewNickname && <span>가능</span>}
+						{reviewNicknameError && <span>중복</span>}
+					</div>
+					<div>
+						<span>비밀번호</span>
+						<input
+							type="password"
+							onChange={onChangePass}
+							placeholder="8자리이상 12자리 이하 숫자 영문 조합"
+						/>
+						{validPass ? (
+							<span>유효한 비밀번호입니다.</span>
+						) : (
+							<span>유효하지 않은 비밀번호입니다.</span>
+						)}
+					</div>
+					<div>
+						<span>비밀번호 확인</span>
+						<input
+							type="password"
+							onChange={onChangeCheckPass}
+							placeholder="똑같이 입력하라능"
+						/>
+						{doubleCheckPass ? <span>참</span> : <span>거짓</span>}
+					</div>
+					<div>
+						<Link to="/login">이미 아이디가 있냐능?</Link>
+					</div>
+					<button type="submit" onClick={handleSignup}>
+						동료가 되자능
+					</button>
+					{errorMessage && <div>{errorMessage}</div>}
+				</form>
+				<div onClick={closeModal}>
+					<button>닫기</button>
 				</div>
-				<div>
-					<span>별명</span>
-					<input onChange={onChangeNickname} placeholder="님별명무엇?" />
-					<button onClick={serverCheckNickname}>중복확인</button>
-					{reviewNickname && <span>참</span>}
-					{reviewNicknameError && <span>거짓</span>}
-				</div>
-				<div>
-					<span>비밀번호</span>
-					<input
-						type="password"
-						onChange={onChangePass}
-						placeholder="8자리이상 12자리 이하 숫자 영문 조합"
-					/>
-					{validPass ? (
-						<span>유효한 비밀번호입니다.</span>
-					) : (
-						<span>유효하지 않은 비밀번호입니다.</span>
-					)}
-				</div>
-				<div>
-					<span>비밀번호 확인</span>
-					<input
-						type="password"
-						onChange={onChangeCheckPass}
-						placeholder="똑같이 입력하라능"
-					/>
-					{doubleCheckPass ? <span>참</span> : <span>거짓</span>}
-				</div>
-				<div>
-					<Link to="/login">이미 아이디가 있냐능?</Link>
-				</div>
-				<button type="submit" onClick={handleSignup}>
-					동료가 되자능
-				</button>
-				{errorMessage && <div>{errorMessage}</div>}
-			</form>
+			</div>
 		</div>
 	);
 }

@@ -76,33 +76,42 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 				setIsLoad(false);
 			});
 	};
+	const closeModal = () => {
+		history.push("/");
+	};
 
 	return (
-		<div>
+		<div className="whiteBackground">
 			{isLoad ? (
 				<Loading isLoad={isLoad} />
 			) : (
-				<div>
-					<input
-						type="text"
-						value={email}
-						onChange={onChangeEmail}
-						placeholder="이메일"
-					/>
-					<br />
-					<input
-						type="password"
-						value={password}
-						onChange={onChangePass}
-						placeholder="비밀번호"
-						onKeyPress={handleKeyPress}
-					/>
-					<br />
-					<button onClick={googleLoginHandler}>구글 로그인</button>
-					<button onClick={loginRequestHandler}>로그인</button>
-					<br />
-					{errorMessage && <div>{errorMessage}</div>}
-					<Link to="signup">회원가입</Link>
+				<div className="loginModal">
+					<div className="loginHeader">로그인</div>
+					<div className="loginContent">
+						<input
+							type="text"
+							value={email}
+							onChange={onChangeEmail}
+							placeholder="이메일"
+						/>
+						<br />
+						<input
+							type="password"
+							value={password}
+							onChange={onChangePass}
+							placeholder="비밀번호"
+							onKeyPress={handleKeyPress}
+						/>
+						<br />
+						<button onClick={googleLoginHandler}>구글 로그인</button>
+						<button onClick={loginRequestHandler}>로그인</button>
+						<br />
+						{errorMessage && <div>{errorMessage}</div>}
+						<Link to="signup">회원가입</Link>
+						<div onClick={closeModal}>
+							<button>닫기</button>
+						</div>
+					</div>
 				</div>
 			)}
 		</div>
