@@ -23,15 +23,10 @@ function Fights({ accessToken }) {
 		console.log(rightFights);
 	};
 
-	// const handleCheckSend = () => {
-	// 	setcheckSend(false);
-	// };
-
 	const submitButton = () => {
 		if (leftFights === "" || rightFights === "" || checkedCategory === "") {
 			setfightErrorMessage("모든 항목을 입력하세요!");
 		} else {
-			
 			axios
 				.post(
 					`https://s.nugathesam.com/fights`,
@@ -65,7 +60,6 @@ function Fights({ accessToken }) {
 			<div id="fights-post-container">
 				<div id="fights-post-body">
 					<div id="fights-post-title">새로운 결투</div>
-
 					<input
 						className="leftFights"
 						maxLength="50"
