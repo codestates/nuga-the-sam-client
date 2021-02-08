@@ -7,24 +7,6 @@ export default function Mypage({ isLogin }) {
 	const [myFights, setMyfights] = useState([]);
 	const [myComments, setMyComments] = useState([]);
 
-
-	
-	const GetDataUserInfo = () => {
-		axios.get(`https://s.nugathesam.com/users/`);
-
-		setUserInfo();
-	};
-	const GetDataMyFights = () => {
-		axios.get(`https://s.nugathesam.com/users/`);
-
-		setMyfights();
-	};
-	const GetDataMyComments = () => {
-		axios.get(`https://s.nugathesam.com/users/`);
-
-		setMyComments();
-	};
-
 	return (
 		<div>
 			<Link
