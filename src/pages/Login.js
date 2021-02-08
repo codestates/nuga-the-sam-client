@@ -39,7 +39,7 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 		if (authorizationCode) {
 			getAccessToken(authorizationCode);
 		}
-	}, []);
+	});
 
 	const onChangePass = (e) => {
 		console.log(e.target.value);
