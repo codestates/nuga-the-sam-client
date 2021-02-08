@@ -1,17 +1,25 @@
 import axios from "axios";
 import React, { useState } from "react";
 
-function WirteComment({
-	viewCommnetHandler,
-	setviewComment,
-	fightId,
-	accessToken,
-}) {
+function WirteComment({ viewCommnetHandler, fightId, accessToken }) {
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
-		axios.post();
-		viewCommnetHandler();
+		axios
+			.post(
+				``,
+				{
+					comments: {
+						writeComment,
+					},
+				},
+				{ headers: { Authorization: `Bearer ${accessToken}` } },
+			)
+			.then((res) => {
+				console.log(res.data);
+				viewCommnetHandler();
+			});
+		console.log(fightId);
 	};
 
 	return (
@@ -25,7 +33,7 @@ function WirteComment({
 						setWriteComment(e.target.value);
 					}}
 				></input>
-				<button onClick={() => submitComment()}> 작성</button>
+				<button onClick={() => submitComment()}>작성</button>
 			</div>
 		</div>
 	);

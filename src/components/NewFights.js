@@ -6,6 +6,7 @@ export default function NewFights({ fights, handleNewFightClick }) {
 
 	//* 더보기 클릭시 9개씩 새로운 글 업로드
 	const handleCount = () => {
+		console.log(fights);
 		setcount(count + 9);
 	};
 
@@ -18,7 +19,7 @@ export default function NewFights({ fights, handleNewFightClick }) {
 					<div className="Loding">로딩중....</div>
 				) : (
 					fights.slice(0, count).map((fights) => (
-						<Link to={`/getfight/${fights.id}`}>
+						<Link to={`/getfight/${fights.id}`} key={fights.id}>
 							<button className="newFight-name" key={fights.id}>
 								<span className="fight-title">{fights.left}</span>
 								<span className="newFight-vs"> vs </span>

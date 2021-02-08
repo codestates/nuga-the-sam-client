@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Loading from "../components/Loading";
+import ViewComment from "../components/ViewComment";
 function GetFight(props) {
 	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
@@ -45,6 +46,7 @@ function GetFight(props) {
 						<div className="rightVote">{fight.right_vote_count}</div>
 					</div>
 				</div>
+
 			)}
 		</div>
 	);
