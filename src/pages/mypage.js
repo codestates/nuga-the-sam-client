@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import ChangeNickNmaeModal from "./ChangeNickNameModal.js";
-function MyPage({ userInfo, myFights, myComments, accessToken }) {
+function MyPage({ userInfo, myFights, myComments, accessToken, setUserInfo }) {
 	const [ischangeNick, setisChangeNick] = useState(false);
 
 	const changeButtonHandler = () => {
 		setisChangeNick(true);
+		console.log(accessToken);
 		console.log(userInfo);
 	};
 
@@ -13,8 +14,7 @@ function MyPage({ userInfo, myFights, myComments, accessToken }) {
 			<div id="mypage-userInfo-container">
 				<div id="mypage-userInfo-body">
 					<div id="mypage-userInfo-title">My Profile</div>
-					<div className="mypage-userInfo">rnrel11@naver.com</div>
-					<div className="mypage-userInfo-">코공코공</div>
+					<div className="mypage-userInfo-">{userInfo.nickname}</div>
 					<button
 						className="mypage-userInfo-changeButton"
 						onClick={() => {
@@ -27,11 +27,12 @@ function MyPage({ userInfo, myFights, myComments, accessToken }) {
 						<ChangeNickNmaeModal
 							setisChangeNick={setisChangeNick}
 							accessToken={accessToken}
+							setUserInfo={setUserInfo}
 						></ChangeNickNmaeModal>
 					) : (
 						<div></div>
 					)}
-					<div className="mypage-userInfo">2021년 2월 4일 </div>
+					<div className="mypage-userInfo">{userInfo.createdAt}</div>
 				</div>
 			</div>
 			<div id="mypage-myFights-container">

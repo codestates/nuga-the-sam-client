@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 export default function NewFights({ fights, handleNewFightClick }) {
-	console.log(fights);
+	// console.log(fights);
 	const [count, setcount] = useState(9);
 
 	const handleCount = () => {

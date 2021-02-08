@@ -1,7 +1,13 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 
-function ChangeNickNameModal({ setisChangeNick, accessToken }) {
+function ChangeNickNameModal({
+	setisChangeNick,
+	accessToken,
+	setUserInfo,
+	history,
+}) {
 	const [newNickNmae, setnewNickNmae] = useState("");
 	const [isLodingnewNickNmae, setisLodingnewNickNmae] = useState(false);
 	const [nickNameError, setnickNameError] = useState("닉네임 변경 중");
@@ -14,19 +20,37 @@ function ChangeNickNameModal({ setisChangeNick, accessToken }) {
 	const isLodingHandler = () => {
 		setisLodingnewNickNmae(true);
 		axios
-			.post(
-				"",
-				{
-					NickName: newNickNmae,
-				},
-				{ headers: { Authorization: `Bearer ${accessToken}` } },
-			)
-			.then((res) => {
-				setisLodingnewNickNmae(false);
-				setisChangeNick(false);
+			.post(`https://s.nugathesam.com/users/signup/checknick`, {
+				nickname: newNickNmae,
+			})
+			.then(() => {
+				axios
+					.put(
+						`https://s.nugathesam.com/users/modify`,
+						{
+							nickname: newNickNmae,
+						},
+						{ headers: { Authorization: `Bearer ${accessToken}` } },
+					)
+					.then((res) => {
+						console.log(res);
+						setisLodingnewNickNmae(false);
+						setisChangeNick(false);
+						axios
+							.get("https://s.nugathesam.com/users", {
+								headers: { Authorization: `Bearer ${accessToken}` },
+							})
+							.then((res) => {
+								setUserInfo(res.data);
+							});
+						history.push("/mypage");
+					})
+					.catch((err) => {
+						setnickNameError("서버가 맛이 갔다");
+					});
 			})
 			.catch((err) => {
-				setnickNameError("서버가 이상하다");
+				setnickNameError("이미 존재하는 닉네임입니다.");
 			});
 	};
 	return (
@@ -44,10 +68,18 @@ function ChangeNickNameModal({ setisChangeNick, accessToken }) {
 			) : (
 				<>
 					<div>{nickNameError}</div>
+					<button
+						onClick={() => {
+							setisLodingnewNickNmae(false);
+							setisChangeNick(false);
+						}}
+					>
+						확인
+					</button>
 				</>
 			)}
 		</div>
 	);
 }
 
-export default ChangeNickNameModal;
+export default withRouter(ChangeNickNameModal);
