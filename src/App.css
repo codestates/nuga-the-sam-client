@@ -4,4 +4,32 @@ body {
 	text-align: center;
 }
 
-/* 특정 파이트 요청에 유효하지 않은 요청은 205를 줌 유효하지 않을때 */
+.fightContainer {
+	display: flex;
+	justify-content: center;
+}
+
+.leftContainer {
+	display: flex;
+	background: blue;
+}
+
+/* .leftFight {
+}
+
+.leftVote {
+}
+
+.vs {
+} */
+
+.rightContainer {
+	display: flex;
+	background: red;
+}
+
+/* .rightFight {
+}
+
+.rightVote {
+} */
