@@ -32,7 +32,7 @@ function App() {
 			})
 			.then((res) => {
 				setUserInfo(res.data);
-				console.log(res.data);
+				// console.log(res.data);
 			})
 
 			.catch((err) => {

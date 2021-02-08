@@ -64,8 +64,6 @@ function Home({ accessToken, history, handleNewFightClick }) {
 			/>
 			<HotFights hotfights={hotfights} />
 			<NewFights fights={fights} handleNewFightClick={handleNewFightClick} />
-
-			<ViewComment></ViewComment>
 		</>
 	);
 }

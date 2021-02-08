@@ -4,25 +4,22 @@ import { withRouter } from "react-router-dom";
 import Loading from "../components/Loading";
 import ViewComment from "../components/ViewComment";
 function GetFight(props) {
-	const [fight, setFight] = useState([]);
+	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
+
 	let fightInfo = {};
 
 	const id = props.match.params.id;
+
 	useEffect(() => {
-		const url = `https://s.nugathesam.com/fights/`;
+		const url = `https://s.nugathesam.com/fights/${id}`;
 		axios.get(url).then((res) => {
-			console.log(res);
-			const data = res.data.filter((data) => {
-				return data.id === parseInt(id);
-			});
-			console.log(id);
-			setFight(data);
+			setFight(res.data);
 			setLoad(false);
 		});
 	}, []);
 
-	fightInfo = fight[0];
+	console.log(fight, "Get fight입니다");
 	/* 
 	이제 만들것
 	토큰 없을 때 클릭시 로그인 창으로 가게끔 하기
@@ -39,22 +36,24 @@ function GetFight(props) {
 			{isLoad ? (
 				<Loading />
 			) : (
-				<>
-					<div className="fightContainer">
-						<div className="leftContainer">
-							<div className="leftFight">{fightInfo.left}</div>
-							<div className="leftVote">{fightInfo.left_vote_count}</div>
-						</div>
-						<div className="vs">vs</div>
-						<div className="rightContainer">
-							<div className="rightFight">{fightInfo.right}</div>
-							<div className="rightVote">{fightInfo.right_vote_count}</div>
-						</div>
+				<div className="fightContainer">
+					<div className="leftContainer">
+						<div className="leftFight">{fight.left}</div>
+						<div className="leftVote">{fight.left_vote_count}</div>
 					</div>
-
-					<ViewComment fightId={id} />
-				</>
+					<div className="vs">vs</div>
+					<div className="rightContainer">
+						<div className="rightFight">{fight.right}</div>
+						<div className="rightVote">{fight.right_vote_count}</div>
+					</div>
+				</div>
 			)}
+			<ViewComment
+				fightId={id}
+				accessToken={props.accessToken}
+				fight={fight}
+				setFight={setFight}
+			></ViewComment>
 		</div>
 	);
 }

@@ -1,48 +1,92 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WriteComment from "./WriteComment.js";
-function ViewComment({ accessToken, fightId }) {
-	const [viewComment, setviewComment] = useState([]);
+import { withRouter } from "react-router-dom";
+import "../style/ViewComment.css";
+import Fights from "../pages/fights.js";
 
-	const viewCommnetHandler = () => {
-		axios.get(``).then((res) => {
-			setviewComment(res.data);
-		});
-	};
+function ViewComment({ accessToken, fightId, fight, setFight, history }) {
+	console.log(fight, "뷰 코멘트");
 
-	const thumbUp = () => {
-		axios.put(``).then(() => {
-			axios.get(``).then((res) => {
-				setviewComment(res.data);
-			});
-		});
-	};
 	return (
-		<>
-			<div>
-				<div></div>
-				{!viewComment ? (
+		<div>
+			{/* {fight.comments.map((fight) => {
+				return <div>{fight.text}</div>;
+			})} */}
+			{/* <div>{fight.comments[0].text}</div> */}
+
+			{/* {fight.comments.map((fight) => {})} */}
+			{/* {!fight.comments ? (
 					<div className="Loding">로딩중....</div>
 				) : (
-					viewComment.map((viewComment) => (
-						<div className="comment-name" key={fightId}>
-							<span className="comment-user">{viewComment}</span>
-							<span className="comment-text">{viewComment}</span>
-							<button className="comment-votes" onClick={() => thumbUp()}>
-								추천
+					fights.comments.map((fights) => (
+				
+							<button className="newFight-name" key={fights.id}>
+								<span className="fight-title">{fights.left}</span>
+								<span className="newFight-vs"> vs </span>
+								<span className="fight-title">{fights.right}</span>
+								<div></div>
+								<span className="fight-votes">{fights.left_vote_count}</span>
+								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+								<span className="fight-votes"> {fights.right_vote_count}</span>
 							</button>
-						</div>
+			
 					))
-				)}
-				<div></div>
-			</div>
-			<WriteComment
-				viewCommnetHandler={viewCommnetHandler}
+				)} */}
+			{/* {!fights ? (
+					<div className="Loding">로딩중....</div>
+				) : (
+					fights.map((fights) => (
+						<button className="newFight-name" key={fights.id}>
+							<span className="fight-title">{fights.left}</span>
+							<span className="newFight-vs"> vs </span>
+							<span className="fight-title">{fights.right}</span>
+							<div></div>
+							<span className="fight-votes">{fights.left_vote_count}</span>
+							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+							<span className="fight-votes"> {fights.right_vote_count}</span>
+						</button>
+					))
+				)} */}
+			{/* <div>{Fights.comments[0].text}</div> */}
+			{/* {fight.comments.map((fight) => {
+					{
+						fight.side === "left" ? (
+							<div>
+								<div className="comment-name-left" key={fightId}>
+									<span className="comment-user-left">{fight.nickname}</span>
+									<span className="comment-text-left">{fight.text}</span>
+									<button
+										className="comment-votes-left"
+										onClick={() => thumbUp()}
+									>
+										추천수 {}
+									</button>
+								</div>
+							</div>
+						) : (
+							<div className="comment-name-right" key={fightId}>
+								<span className="comment-user-right">{fight.nickname}</span>
+								<span className="comment-text-right">{fight.text}</span>
+								<button
+									className="comment-votes-right"
+									onClick={() => thumbUp()}
+								>
+									추천수 {}
+								</button>
+							</div>
+						);
+					}
+				})} */}
+
+			{/* <WriteComment
+				fight={fight}
+				// viewCommnetHandler={viewCommnetHandler}
 				accessToken={accessToken}
 				fightId={fightId}
-			/>
-		</>
+			/> */}
+		</div>
 	);
 }
 
-export default ViewComment;
+export default withRouter(ViewComment);

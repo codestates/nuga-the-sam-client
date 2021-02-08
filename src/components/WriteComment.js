@@ -1,23 +1,28 @@
 import axios from "axios";
 import React, { useState } from "react";
-
-function WirteComment({ viewCommnetHandler, fightId, accessToken }) {
+import "../style/WriteComment.css";
+function WirteComment({ viewCommnetHandler, fightId, accessToken, fight }) {
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
+		console.log(fightId, "파이트 아이디");
+		console.log(writeComment, "댓글 내용");
+		console.log(accessToken, "토큰");
 		axios
 			.post(
-				``,
+				`https://s.nugathesam.com/fights/${fightId}/comments`,
 				{
-					comments: {
-						writeComment,
-					},
+					text: writeComment,
+					side: `left`,
 				},
 				{ headers: { Authorization: `Bearer ${accessToken}` } },
 			)
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data, "너 누구야??????");
 				viewCommnetHandler();
+			})
+			.catch((err) => {
+				console.log(err);
 			});
 		console.log(fightId);
 	};

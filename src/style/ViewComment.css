@@ -1,0 +1,39 @@
+.comment-name-left {
+	color: red;
+	left: 0%;
+}
+
+.comment-user-left {
+	color: red;
+	left: 0%;
+}
+
+.comment-text-left {
+	color: red;
+	left: 0%;
+}
+
+.comment-votes-left {
+	color: red;
+	left: 0%;
+}
+
+.comment-name-right {
+	color: blue;
+	right: 0%;
+}
+
+.comment-user-right {
+	color: blue;
+	right: 0%;
+}
+
+.comment-text-right {
+	color: blue;
+	right: 0%;
+}
+
+.comment-votes-right {
+	color: blue;
+	right: 0%;
+}
