@@ -53,6 +53,7 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 
 	const loginRequestHandler = () => {
 		const url = "https://s.nugathesam.com/users/login";
+		setIsLoad(true);
 		axios
 			.post(url, { email: email, password: password })
 			.then((res) => {
@@ -61,15 +62,18 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 					setError("");
 					loginHandler(true);
 					issueAccessToken(res.data.token);
+					setIsLoad(false);
 					history.push("/");
 				} else {
 					loginHandler(true);
 					issueAccessToken(res.data.token);
+					setIsLoad(false);
 					history.push("/");
 				}
 			})
 			.catch((err) => {
 				setError("이메일을 또는 비밀번호를 확인하세요");
+				setIsLoad(false);
 			});
 	};
 
