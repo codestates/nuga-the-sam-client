@@ -7,7 +7,7 @@ import Category from "../components/category.js";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import MakeFights from "../components/makefights.js";
 import axios from "axios";
-import Mypage from "../components/Mypage.js";
+// import Mypage from "../components/Mypage.js";
 function Home() {
 	const [fights, setFights] = useState();
 	const [CategoryData] = useState(category.name);
@@ -38,8 +38,17 @@ function Home() {
 		getHotDataAndRender();
 	}, []);
 
-	const handleNewFightClick = (e) => {
-		console.log(e);
+	const handleNewFightClick = (fightsId) => {
+		console.log(fightsId);
+		axios
+			.get(
+				``,
+				{
+					fights: fightsId,
+				},
+				// { headers: { Authorization: `Bearer ${accessToken}` } },
+			)
+			.then((res) => {});
 	};
 
 	const handleCategoryClick = (categoryname) => {

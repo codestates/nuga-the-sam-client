@@ -23,13 +23,16 @@ function App() {
 	};
 	const issueAccessToken = (token) => {
 		setToken(token);
-		console.log(token);
 
 		axios
 			.get("https://s.nugathesam.com/users", {
-				headers: { Authorization: `Bearer ${accessToken}` },
+				headers: { Authorization: `Bearer ${token}` },
 			})
-			.then((res) => console.log(res))
+			.then((res) => {
+				setUserInfo(res.data);
+				console.log(res.data);
+			})
+
 			.catch((err) => {
 				console.log("무언가 잘못됐다.");
 			});
@@ -63,7 +66,14 @@ function App() {
 						exact
 						path="/mypage"
 						render={() => {
-							return <Mypage isLogin={isLogin} accessToken={accessToken} />;
+							return (
+								<Mypage
+									isLogin={isLogin}
+									accessToken={accessToken}
+									userInfo={userInfo}
+									setUserInfo={setUserInfo}
+								/>
+							);
 						}}
 					/>
 					<Route

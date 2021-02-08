@@ -2,7 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
 function Header({ isLogin, logoutHandler, history }) {
-	console.log(isLogin);
+	// console.log(isLogin);
 
 	const handleClickLogout = () => {
 		logoutHandler();
