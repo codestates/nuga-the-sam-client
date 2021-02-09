@@ -28,75 +28,86 @@ function MyPage({ userInfo, accessToken, setUserInfo }) {
 	}, []);
 	return (
 		<div>
-			<div className="mypage-userInfo-container">
-				<div className="mypage-userInfo-body">
-					<div className="mypage-userInfo-title">My Profile</div>
-					<div>키미노 나마에와</div>
-					<div className="mypage-userInfo-text">{userInfo.nickname}</div>
-					<button
-						className="mypage-userInfo-changeButton"
-						onClick={() => {
-							changeButtonHandler(true);
-						}}
-					>
-						닉네임 변경
-					</button>
-					{ischangeNick ? (
-						<ChangeNickNmaeModal
-							setisChangeNick={setisChangeNick}
-							accessToken={accessToken}
-							setUserInfo={setUserInfo}
-						></ChangeNickNmaeModal>
-					) : (
-						<div></div>
-					)}
-					<div>가입일</div>
-					<div className="mypage-userInfo-text"> {userInfo.createdAt}</div>
-				</div>
-			</div>
-
-			<div className="mypage-userInfo-container">
-				<div className="mypage-userInfo-body">
-					<div className="mypage-userInfo-title">My Fights</div>
-					{!userInfo.fights.length ? (
-						<div>쫄보세요? 신청한 싸움이 없네요</div>
-					) : (
-						userInfo.fights.map((fights) => (
-							<Link to={`/getfight/${fights.id}`} key={fights.id}>
-								<button className="newFight-name" key={fights.id}>
-									<span className="fight-title">{fights.left}</span>
-									<span className="newFight-vs"> vs </span>
-									<span className="fight-title">{fights.right}</span>
-									<div></div>
-									<span className="fight-votes">{fights.left_vote_count}</span>
-									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-									<span className="fight-votes">{fights.right_vote_count}</span>
-								</button>
-							</Link>
-						))
-					)}
-				</div>
-			</div>
-
-			<div className="mypage-userInfo-container">
-				<div className="mypage-userInfo-body">
-					<div className="mypage-userInfo-title">My Comments</div>
-					{!userInfo.comments.length ? (
-						<div>쫄보세요? 작성한 댓글이 없네요</div>
-					) : (
-						userInfo.comments.map((comments) => (
-							<Link
-								to={`/getfight/${comments.fight_id}`}
-								key={comments.fight_id}
+			{!userInfo ? (
+				<div className="Loding">로딩중....</div>
+			) : (
+				<div>
+					{" "}
+					<div className="mypage-userInfo-container">
+						<div className="mypage-userInfo-body">
+							<div className="mypage-userInfo-title">My Profile</div>
+							<div>키미노 나마에와</div>
+							<div className="mypage-userInfo-text">{userInfo.nickname}</div>
+							<button
+								className="mypage-userInfo-changeButton"
+								onClick={() => {
+									changeButtonHandler(true);
+								}}
 							>
-								<div className="mypage-comments-name" key={comments.fight_id}>
-									<span className="mypage-comments-title">{comments.text}</span>
-								</div>
-							</Link>
-						))
-					)}
+								닉네임 변경
+							</button>
+							{ischangeNick ? (
+								<ChangeNickNmaeModal
+									setisChangeNick={setisChangeNick}
+									accessToken={accessToken}
+									setUserInfo={setUserInfo}
+								></ChangeNickNmaeModal>
+							) : (
+								<div></div>
+							)}
+							<div>가입일</div>
+							<div className="mypage-userInfo-text"> {userInfo.createdAt}</div>
+						</div>
+					</div>
+					<div className="mypage-userInfo-container">
+						<div className="mypage-userInfo-body">
+							<div className="mypage-userInfo-title">My Fights</div>
+							{!userInfo.fights.length ? (
+								<div>쫄보세요? 신청한 싸움이 없네요</div>
+							) : (
+								userInfo.fights.map((fights) => (
+									<Link to={`/getfight/${fights.id}`}>
+										<button className="newFight-name" key={fights.id}>
+											<span className="fight-title">{fights.left}</span>
+											<span className="newFight-vs"> vs </span>
+											<span className="fight-title">{fights.right}</span>
+											<div></div>
+											<span className="fight-votes">
+												{fights.left_vote_count}
+											</span>
+											<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+											<span className="fight-votes">
+												{fights.right_vote_count}
+											</span>
+										</button>
+									</Link>
+								))
+							)}
+						</div>
+					</div>
+					<div className="mypage-userInfo-container">
+						<div className="mypage-userInfo-body">
+							<div className="mypage-userInfo-title">My Comments</div>
+							{!userInfo.comments.length ? (
+								<div>쫄보세요? 작성한 댓글이 없네요</div>
+							) : (
+								userInfo.comments.map((comments) => (
+									<Link to={`/getfight/${comments.fight_id}`}>
+										<div
+											className="mypage-comments-name"
+											key={comments.fight_id}
+										>
+											<span className="mypage-comments-title">
+												{comments.text}
+											</span>
+										</div>
+									</Link>
+								))
+							)}
+						</div>
+					</div>{" "}
 				</div>
-			</div>
+			)}
 		</div>
 	);
 }
