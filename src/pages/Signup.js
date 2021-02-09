@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, withRouter } from "react-router-dom";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from "@material-ui/icons/Cancel";
+import Loading from "../components/Loading";
 import axios from "axios";
 import "../style/Signup.css";
 
@@ -17,32 +18,28 @@ function Signup({ history }) {
 	const [validPass, setValidPass] = useState(false);
 	// 이메일중복확인
 	const [reviewEmail, setReviewEmail] = useState(false);
-	const [reviewEmailError, setReviewEmailError] = useState("");
 	//닉네임중복확인
 	const [reviewNickname, setReviewNickname] = useState(false);
-	const [reviewNicknameError, setReviewNicknameError] = useState("");
 	//패스워드 두개 맞는지 확인
 	const [doubleCheckPass, setDoubleCheckPass] = useState(false);
-	// (checkEmail&&validPass&&reviewEmail&&reviewNickname&&doubleCheckPass)
+	const [isLoad, setLoad] = useState(false);
 	//!onChange
 	const onChangeEmail = (e) => {
 		setEmail(e.target.value);
-		console.log(e.target.value);
+		setReviewEmail(false);
 		setCheckEmail(validEmailCheck(e.target.value));
 	};
 	const onChangeNickname = (e) => {
 		setNickname(e.target.value);
-		console.log(e.target.value);
+		setReviewNickname(false);
 	};
 	const onChangePass = (e) => {
 		setPassword(e.target.value);
-		console.log(e.target.value);
 		setValidPass(validPassCheck(e.target.value));
 		passCheck(e.target.value, checkPass);
 	};
 	const onChangeCheckPass = (e) => {
 		setCheckPass(e.target.value);
-		console.log(e.target.value);
 		passCheck(password, e.target.value);
 	};
 
@@ -69,7 +66,6 @@ function Signup({ history }) {
 
 	//! 중복확인
 	const serverCheckEmail = () => {
-		setReviewEmailError("");
 		setReviewEmail(false);
 		let url = "https://s.nugathesam.com/users/signup/checkemail";
 		let checkEmail = email;
@@ -77,24 +73,26 @@ function Signup({ history }) {
 			.post(url, { email: checkEmail })
 			.then((res) => {
 				setReviewEmail(true);
+				alert("가능한 이메일입니다.");
 			})
 			.catch((err) => {
-				setReviewEmailError("중복된 이메일 입니다.");
+				alert("중복된 이메일 입니다.");
 			});
 	};
 
 	const serverCheckNickname = () => {
 		setReviewNickname(false);
-		setReviewNicknameError("");
+
 		let url = "https://s.nugathesam.com/users/signup/checknick";
 		let checkNick = nickname;
 		axios
 			.post(url, { nickname: checkNick })
 			.then((res) => {
 				setReviewNickname(true);
+				alert("가능한 별명입니다.");
 			})
 			.catch((err) => {
-				setReviewNicknameError("중복된 닉네임입니다.");
+				alert("중복된 별명입니다..");
 			});
 	};
 	const closeModal = () => {
@@ -119,19 +117,23 @@ function Signup({ history }) {
 			reviewNickname &&
 			doubleCheckPass
 		) {
+			setLoad(true);
 			axios
 				.post(url, { email: email, password: password, nickname: nickname })
 				.then(() => {
 					if (errorMessage) {
 						setError("");
+						setLoad(false);
 						history.push("/login");
 					} else {
+						setLoad(false);
 						history.push("/login");
 					}
 				})
 				.catch((err) => {
 					console.log(err);
 					setError("에러에러에러");
+					setLoad(false);
 				});
 		} else {
 			if (!checkEmail) {
@@ -149,64 +151,64 @@ function Signup({ history }) {
 	};
 	return (
 		<div className="whiteBackground">
-			<div className="signUpModal">
-				<div className="signUpHeader">어서오고</div>
-				<form className="signUpContents" onSubmit={(e) => e.preventDefault()}>
-					<div className="emailContainer">
-						<span className="signupInput">이메일</span>
-						<input
-							className="signupInputValue"
-							onChange={onChangeEmail}
-							placeholder="이메일양식작성바람"
-						/>
-						{checkEmail ? <CheckCircleIcon /> : <CancelIcon />}
-						<button onClick={serverCheckEmail}>중복확인</button>
-						{reviewEmail && <span>가능</span>}
-						{reviewEmailError && <span>중복</span>}
-					</div>
-					<div class="nicknameContainer">
-						<span className="signupInput">별명</span>
-						<input
-							className="signupInputValue"
-							onChange={onChangeNickname}
-							placeholder="님별명무엇?"
-						/>
-						<button onClick={serverCheckNickname}>중복확인</button>
-						{reviewNickname && <span>가능</span>}
-						{reviewNicknameError && <span>중복</span>}
-					</div>
-					<div className="passwordContainer">
-						<span className="signupInput">비밀번호</span>
-						<input
-							className="signupInputValue"
-							type="password"
-							onChange={onChangePass}
-							placeholder="8자리이상 12자리 이하 숫자 영문 조합"
-						/>
-						{validPass ? <CheckCircleIcon /> : <CancelIcon />}
-					</div>
-					<div className="checkPassContainer">
-						<span className="signupInput">비밀번호 확인</span>
-						<input
-							className="signupInputValue"
-							type="password"
-							onChange={onChangeCheckPass}
-							placeholder="똑같이 입력하라능"
-						/>
-						{doubleCheckPass ? <CheckCircleIcon /> : <CancelIcon />}
-					</div>
-					<div className="goLoginBtn">
-						<Link to="/login">이미 아이디가 있냐능?</Link>
-					</div>
-					<button className="signUpBtn" type="submit" onClick={handleSignup}>
-						동료가 되자능
+			{isLoad ? (
+				<Loading />
+			) : (
+				<div className="signUpModal">
+					<div className="signUpHeader">어서오고</div>
+					<form className="signUpContents" onSubmit={(e) => e.preventDefault()}>
+						<div className="emailContainer">
+							<span className="signupInput">이메일</span>
+							<input
+								className="signupInputValue"
+								onChange={onChangeEmail}
+								placeholder="이메일양식작성바람"
+							/>
+							{checkEmail ? <CheckCircleIcon /> : <CancelIcon />}
+							<button onClick={serverCheckEmail}>중복확인</button>
+						</div>
+						<div class="nicknameContainer">
+							<span className="signupInput">별명</span>
+							<input
+								className="signupInputValue"
+								onChange={onChangeNickname}
+								placeholder="님별명무엇?"
+							/>
+							<button onClick={serverCheckNickname}>중복확인</button>
+						</div>
+						<div className="passwordContainer">
+							<span className="signupInput">비밀번호</span>
+							<input
+								className="signupInputValue"
+								type="password"
+								onChange={onChangePass}
+								placeholder="8자리이상 12자리 이하 숫자 영문 조합"
+							/>
+							{validPass ? <CheckCircleIcon /> : <CancelIcon />}
+						</div>
+						<div className="checkPassContainer">
+							<span className="signupInput">비밀번호 확인</span>
+							<input
+								className="signupInputValue"
+								type="password"
+								onChange={onChangeCheckPass}
+								placeholder="똑같이 입력하라능"
+							/>
+							{doubleCheckPass ? <CheckCircleIcon /> : <CancelIcon />}
+						</div>
+						<div className="goLoginBtn">
+							<Link to="/login">이미 아이디가 있냐능?</Link>
+						</div>
+						<button className="signUpBtn" type="submit" onClick={handleSignup}>
+							동료가 되자능
+						</button>
+						{errorMessage && <div>{errorMessage}</div>}
+					</form>
+					<button className="closeBtn" onClick={closeModal}>
+						닫기
 					</button>
-					{errorMessage && <div>{errorMessage}</div>}
-				</form>
-				<button className="closeBtn" onClick={closeModal}>
-					닫기
-				</button>
-			</div>
+				</div>
+			)}
 		</div>
 	);
 }

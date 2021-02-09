@@ -64,6 +64,7 @@ function Fights({ accessToken }) {
 				//! 서버 에러
 				.catch((err) => {
 					setfightErrorMessage("무엇가 잘못됐다.");
+					alert("로그인을 하시오!");
 				});
 		}
 	};

@@ -11,6 +11,7 @@ function GetFight(props) {
 	const [alreadyVote, setAlreadyVote] = useState(false);
 	const id = props.match.params.id;
 
+	const token = props.accessToken;
 	useEffect(() => {
 		setLoad(true);
 
