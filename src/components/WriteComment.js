@@ -11,10 +11,7 @@ function WirteComment({
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
-		console.log(fightId, "파이트 아이디");
-		console.log(writeComment, "댓글 내용");
-		console.log(accessToken, "토큰");
-		// setLoad(true);
+		console.log(fight, "asdjkfhfsldjksljdkfhjk");
 		axios
 			.post(
 				`https://s.nugathesam.com/fights/${fightId}/comments`,

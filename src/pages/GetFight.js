@@ -12,6 +12,7 @@ function GetFight(props) {
 	const id = props.match.params.id;
 	const token = props.accessToken;
 
+	const token = props.accessToken;
 	useEffect(() => {
 		setLoad(true);
 		console.log(
