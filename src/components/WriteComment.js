@@ -20,7 +20,7 @@ function WirteComment({
 				`https://s.nugathesam.com/fights/${fightId}/comments`,
 				{
 					text: writeComment,
-					side: `right`,
+					side: `left`,
 				},
 				{ headers: { Authorization: `Bearer ${accessToken}` } },
 			)

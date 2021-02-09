@@ -5,10 +5,12 @@ import Loading from "../components/Loading";
 import "../style/GetFight.css";
 import ViewComment from "../components/ViewComment";
 
+
 function GetFight(props) {
 	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
 	const id = props.match.params.id;
+	// console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
 	console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
@@ -23,6 +25,7 @@ function GetFight(props) {
 			setFight(res.data);
 		});
 	}, []);
+
 
 	console.log(fight);
 
@@ -79,6 +82,7 @@ function GetFight(props) {
 				fight={fight}
 				setFight={setFight}
 				setLoad={setLoad}
+				userInfo={props.userInfo}
 			></ViewComment>
 		</div>
 	);
