@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "../style/WriteComment.css";
-function WirteComment({
+function WriteComment({
 	viewCommnetHandler,
 	fightId,
 	accessToken,
@@ -11,6 +11,7 @@ function WirteComment({
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
+
 		axios
 			.post(
 				`https://s.nugathesam.com/fights/${fightId}/comments`,
@@ -45,4 +46,4 @@ function WirteComment({
 	);
 }
 
-export default WirteComment;
+export default WriteComment;
