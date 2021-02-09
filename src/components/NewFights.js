@@ -6,8 +6,11 @@ export default function NewFights({ fights, handleNewFightClick }) {
 
 	//* 더보기 클릭시 9개씩 새로운 글 업로드
 	const handleCount = () => {
-		console.log(fights);
-		setcount(count + 9);
+		if (fights.length > count) {
+			setcount(count + 9);
+		} else if (fights.length < count) {
+			setcount(fights.length);
+		}
 	};
 
 	return (

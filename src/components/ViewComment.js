@@ -4,6 +4,8 @@ import WriteComment from "./WriteComment.js";
 import "../style/ViewComment.css";
 import ModifyComment from "../pages/ModifyComment.js";
 import DeleteComments from "./DeleteComments.js";
+import RecomandComment from "./RecomandComment.js";
+
 function ViewComment({
 	accessToken,
 	fightId,
@@ -52,13 +54,23 @@ function ViewComment({
 											{fights.user.nickname}
 										</div>
 										<span className="comment-time-left">
-											{fights.createdAt}
+											{fights.createdAt.slice(0, 10)}
+											<span>&nbsp;&nbsp;</span>
+											{fights.createdAt.slice(11, 19)}
 										</span>
 										<div className="comment-text-left">{fights.text}</div>
 										<div className="comment-like-left ">
 											{fights.like_count}
 										</div>
-										<button className="comment-votes-left">추천</button>
+										<>
+											<RecomandComment
+												setisModify={setisModify}
+												fightId={fightId}
+												commentId={fights.id}
+												accessToken={accessToken}
+												setFight={setFight}
+											></RecomandComment>
+										</>
 
 										<button
 											className="comment-modify-left"
@@ -95,7 +107,9 @@ function ViewComment({
 											{fights.user.nickname}
 										</div>
 										<span className="comment-time-left">
-											{fights.createdAt}
+											{fights.createdAt.slice(0, 10)}
+											<span>&nbsp;&nbsp;</span>
+											{fights.createdAt.slice(11, 19)}
 										</span>
 										<div className="comment-text-left">{fights.text}</div>
 										<div className="comment-like-left ">
@@ -113,13 +127,23 @@ function ViewComment({
 											{fights.user.nickname}
 										</div>
 										<span className="comment-time-right">
-											{fights.createdAt}
+											{fights.createdAt.slice(0, 10)}
+											<span>&nbsp;&nbsp;</span>
+											{fights.createdAt.slice(11, 19)}
 										</span>
 										<div className="comment-text-right">{fights.text}</div>
 										<div className="comment-like-right">
 											{fights.like_count}
 										</div>
-										<button className="comment-votes-right ">추천</button>
+										<>
+											<RecomandComment
+												setisModify={setisModify}
+												fightId={fightId}
+												commentId={fights.id}
+												accessToken={accessToken}
+												setFight={setFight}
+											></RecomandComment>
+										</>
 										<button
 											className="comment-modify-right"
 											onClick={(e) => modifyCommentButton(e)}
@@ -155,7 +179,9 @@ function ViewComment({
 											{fights.user.nickname}
 										</div>
 										<span className="comment-time-right">
-											{fights.createdAt}
+											{fights.createdAt.slice(0, 10)}
+											<span>&nbsp;&nbsp;</span>
+											{fights.createdAt.slice(11, 19)}
 										</span>
 										<div className="comment-text-right">{fights.text}</div>
 										<div className="comment-like-right">

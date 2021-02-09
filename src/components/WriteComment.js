@@ -11,22 +11,25 @@ function WriteComment({
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
-
-		axios
-			.post(
-				`https://s.nugathesam.com/fights/${fightId}/comments`,
-				{
-					text: writeComment,
-					side: side,
-				},
-				{ headers: { Authorization: `Bearer ${accessToken}` } },
-			)
-			.then((res) => {
-				viewCommnetHandler();
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		if (side) {
+			axios
+				.post(
+					`https://s.nugathesam.com/fights/${fightId}/comments`,
+					{
+						text: writeComment,
+						side: side,
+					},
+					{ headers: { Authorization: `Bearer ${accessToken}` } },
+				)
+				.then((res) => {
+					viewCommnetHandler();
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		} else {
+			alert("투표 먼저 하세요!");
+		}
 	};
 
 	return (
