@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "../style/WriteComment.css";
-function WirteComment({
+function WriteComment({
 	viewCommnetHandler,
 	fightId,
 	accessToken,
@@ -11,21 +11,25 @@ function WirteComment({
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
-		axios
-			.post(
-				`https://s.nugathesam.com/fights/${fightId}/comments`,
-				{
-					text: writeComment,
-					side: side,
-				},
-				{ headers: { Authorization: `Bearer ${accessToken}` } },
-			)
-			.then((res) => {
-				viewCommnetHandler();
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		if (side) {
+			axios
+				.post(
+					`https://s.nugathesam.com/fights/${fightId}/comments`,
+					{
+						text: writeComment,
+						side: side,
+					},
+					{ headers: { Authorization: `Bearer ${accessToken}` } },
+				)
+				.then((res) => {
+					viewCommnetHandler();
+				})
+				.catch((err) => {
+					console.log(err);
+				});
+		} else {
+			alert("투표 먼저 하세요!");
+		}
 	};
 
 	return (
@@ -45,4 +49,4 @@ function WirteComment({
 	);
 }
 
-export default WirteComment;
+export default WriteComment;

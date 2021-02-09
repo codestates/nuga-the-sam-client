@@ -96,7 +96,9 @@ function GetFight(props) {
 		}
 	};
 
-	const HandleChangeAlreadyVoteClick = () => {};
+	const HandleChangeAlreadyVoteClick = () => {
+		setAlreadyVote(false);
+	};
 
 	return (
 		<div>
@@ -104,6 +106,14 @@ function GetFight(props) {
 				<Loading />
 			) : (
 				<div>
+					{alreadyVote && (
+						<div className="alreadyVoteBox">
+							<div>중복투표는 불가 합니다</div>
+							<div>
+								<button onClick={HandleChangeAlreadyVoteClick}>닫기</button>
+							</div>
+						</div>
+					)}
 					<div className="fightContainer">
 						<div className="leftContainer" onClick={handleLeftVoteClick}>
 							<div className="leftFight">{fight.left}</div>
