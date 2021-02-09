@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "../style/WriteComment.css";
-function WirteComment({
+function WriteComment({
 	viewCommnetHandler,
 	fightId,
 	accessToken,
@@ -11,7 +11,10 @@ function WirteComment({
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
-		console.log(fight, "asdjkfhfsldjksljdkfhjk");
+		console.log(fightId, "파이트 아이디");
+		console.log(writeComment, "댓글 내용");
+		console.log(accessToken, "토큰");
+		// setLoad(true);
 		axios
 			.post(
 				`https://s.nugathesam.com/fights/${fightId}/comments`,
@@ -49,4 +52,4 @@ function WirteComment({
 	);
 }
 
-export default WirteComment;
+export default WriteComment;
