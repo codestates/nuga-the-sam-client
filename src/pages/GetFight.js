@@ -14,6 +14,7 @@ function GetFight(props) {
 
 	console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
+	const token = props.accessToken;
 	useEffect(() => {
 		setLoad(true);
 		const url = `https://s.nugathesam.com/fights/${id}`;

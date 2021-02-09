@@ -72,6 +72,7 @@ function ViewComment({
 												fightId={fightId}
 												commentId={fights.id}
 												accessToken={accessToken}
+												setFight={setFight}
 											></ModifyComment>
 										)}
 										<button className="comment-delete-left">삭제</button>
@@ -140,6 +141,7 @@ function ViewComment({
 				accessToken={accessToken}
 				viewCommnetHandler={viewCommnetHandler}
 				setLoad={setLoad}
+				fight={fight}
 			></WriteComment>
 		</div>
 	);
