@@ -10,21 +10,17 @@ function GetFight(props) {
 	const [isLoad, setLoad] = useState(true);
 	const [alreadyVote, setAlreadyVote] = useState(false);
 	const id = props.match.params.id;
-	// console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
-
-	console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
+	const token = props.accessToken;
 
 	useEffect(() => {
 		setLoad(true);
+		console.log(
+			"Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중",
+		);
 		const url = `https://s.nugathesam.com/fights/${id}`;
-		console.log(token);
 		axios
 			.get(url, { headers: { Authorization: `bearer ${token}` } })
 			.then((res) => {
-				console.log(
-					res.data,
-					"다시됩니까?다시됩니까?다시됩니까?다시됩니까?다시됩니까?",
-				);
 				setFight(res.data);
 				setLoad(false);
 			});
@@ -49,8 +45,16 @@ function GetFight(props) {
 			axios
 				.put(url, null, { headers: { Authorization: `bearer ${token}` } })
 				.then((res) => {
-					setLoad(true);
-					props.history.push(`getfight/${id}`);
+					console.log(
+						"leftClickleftClickleftClickleftClickleftClickleftClickleftClick",
+					);
+					const getUrl = `https://s.nugathesam.com/fights/${id}`;
+					axios
+						.get(getUrl, { headers: { Authorization: `bearer ${token}` } })
+						.then((res) => {
+							console.log(res.data);
+							setFight(res.data);
+						});
 				})
 				.catch((err) => {
 					console.log(err.response.status);
@@ -70,8 +74,14 @@ function GetFight(props) {
 			axios
 				.put(url, null, { headers: { Authorization: `bearer ${token}` } })
 				.then((res) => {
-					setLoad(true);
-					props.history.push(`getfight/${id}`);
+					console.log("rightclickrightclickrightclickrightclickrightclick");
+					const getUrl = `https://s.nugathesam.com/fights/${id}`;
+					axios
+						.get(getUrl, { headers: { Authorization: `bearer ${token}` } })
+						.then((res) => {
+							console.log(res.data);
+							setFight(res.data);
+						});
 				})
 				.catch((err) => {
 					console.log(err.response);
