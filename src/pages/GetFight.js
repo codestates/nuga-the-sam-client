@@ -5,10 +5,10 @@ import Loading from "../components/Loading";
 import "../style/GetFight.css";
 import ViewComment from "../components/ViewComment";
 
-
 function GetFight(props) {
 	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
+	const [alreadyVote, setAlreadyVote] = useState(false);
 	const id = props.match.params.id;
 	// console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
@@ -17,17 +17,18 @@ function GetFight(props) {
 	useEffect(() => {
 		setLoad(true);
 		const url = `https://s.nugathesam.com/fights/${id}`;
-		axios.get(url).then((res) => {
-			console.log(res.data, "다시됩니까?");
-			setFight(res.data);
-
-			setLoad(false);
-			setFight(res.data);
-		});
+		console.log(token);
+		axios
+			.get(url, { headers: { Authorization: `bearer ${token}` } })
+			.then((res) => {
+				console.log(
+					res.data,
+					"다시됩니까?다시됩니까?다시됩니까?다시됩니까?다시됩니까?",
+				);
+				setFight(res.data);
+				setLoad(false);
+			});
 	}, []);
-
-
-	console.log(fight);
 
 	/* 
 	이제 만들것
@@ -44,8 +45,20 @@ function GetFight(props) {
 			props.history.push("/login");
 		} else {
 			console.log("왼쪽에 투표하였습니다.");
-			// let url = "";
-			// axios.put(url);
+			let url = `https://s.nugathesam.com/fights/${id}/left_vote`;
+			axios
+				.put(url, null, { headers: { Authorization: `bearer ${token}` } })
+				.then((res) => {
+					setLoad(true);
+					props.history.push(`getfight/${id}`);
+				})
+				.catch((err) => {
+					console.log(err.response.status);
+					const status = err.response.status;
+					if (status === 409) {
+						setAlreadyVote(true);
+					}
+				});
 		}
 	};
 	const handleRightVoteClick = () => {
@@ -53,10 +66,25 @@ function GetFight(props) {
 			props.history.push("/login");
 		} else {
 			console.log("오른쪽에 투표하였습니다.");
-			// let url = "";
-			// axios.put(url);
+			let url = `https://s.nugathesam.com/fights/${id}/right_vote`;
+			axios
+				.put(url, null, { headers: { Authorization: `bearer ${token}` } })
+				.then((res) => {
+					setLoad(true);
+					props.history.push(`getfight/${id}`);
+				})
+				.catch((err) => {
+					console.log(err.response);
+					const status = err.response.status;
+					if (status === 409) {
+						setAlreadyVote(true);
+					}
+				});
 		}
 	};
+
+	const HandleChangeAlreadyVoteClick = () => {};
+
 	return (
 		<div>
 			{isLoad ? (
