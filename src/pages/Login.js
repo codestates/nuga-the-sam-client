@@ -24,7 +24,7 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 		let url = "https://s.nugathesam.com/users/social";
 		setIsLoad(true);
 		axios.post(url, { authorizationCode }).then((res) => {
-			console.log(res.data);
+			// console.log(res.data);
 			loginHandler(true);
 			issueAccessToken(res.data.token);
 			setIsLoad(false);
@@ -35,7 +35,7 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 	useEffect(() => {
 		const url = new URL(window.location.href);
 		const authorizationCode = url.searchParams.get("code");
-		console.log(authorizationCode);
+		// console.log(authorizationCode);
 		if (authorizationCode) {
 			getAccessToken(authorizationCode);
 		}

@@ -1,90 +1,67 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
-import WriteComment from "./WriteComment.js";
+import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
+import WriteComment from "./WriteComment.js";
 import "../style/ViewComment.css";
-import Fights from "../pages/fights.js";
 
-function ViewComment({ accessToken, fightId, fight, setFight, history }) {
-	console.log(fight, "뷰 코멘트");
+function ViewComment({
+	accessToken,
+	fightId,
+	fight,
+	history,
+	setLoad,
+	setFight,
+}) {
+	const viewCommnetHandler = () => {
+		const url = `https://s.nugathesam.com/fights/${fightId}`;
+		axios.get(url).then((res) => {
+			setFight(res.data);
+			setLoad(false);
+		});
+	};
 
 	return (
 		<div>
-			{/* {fight.comments.map((fight) => {
-				return <div>{fight.text}</div>;
-			})} */}
-			{/* <div>{fight.comments[0].text}</div> */}
-
-			{/* {fight.comments.map((fight) => {})} */}
-			{/* {!fight.comments ? (
-					<div className="Loding">로딩중....</div>
+			<div className="comment-container">
+				{!fight.comments ? (
+					<div>로딩중....</div>
 				) : (
-					fights.comments.map((fights) => (
-				
-							<button className="newFight-name" key={fights.id}>
-								<span className="fight-title">{fights.left}</span>
-								<span className="newFight-vs"> vs </span>
-								<span className="fight-title">{fights.right}</span>
-								<div></div>
-								<span className="fight-votes">{fights.left_vote_count}</span>
-								<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-								<span className="fight-votes"> {fights.right_vote_count}</span>
-							</button>
-			
-					))
-				)} */}
-			{/* {!fights ? (
-					<div className="Loding">로딩중....</div>
-				) : (
-					fights.map((fights) => (
-						<button className="newFight-name" key={fights.id}>
-							<span className="fight-title">{fights.left}</span>
-							<span className="newFight-vs"> vs </span>
-							<span className="fight-title">{fights.right}</span>
-							<div></div>
-							<span className="fight-votes">{fights.left_vote_count}</span>
-							<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-							<span className="fight-votes"> {fights.right_vote_count}</span>
-						</button>
-					))
-				)} */}
-			{/* <div>{Fights.comments[0].text}</div> */}
-			{/* {fight.comments.map((fight) => {
-					{
-						fight.side === "left" ? (
-							<div>
-								<div className="comment-name-left" key={fightId}>
-									<span className="comment-user-left">{fight.nickname}</span>
-									<span className="comment-text-left">{fight.text}</span>
-									<button
-										className="comment-votes-left"
-										onClick={() => thumbUp()}
-									>
-										추천수 {}
-									</button>
+					fight.comments.map((fights) => {
+						if (fights.side === "left")
+							return (
+								<div className="comment-name-left">
+									<div className="comment-nickname-left ">
+										{fights.user.nickname}
+									</div>
+									<span className="comment-time-left">{fights.createdAt}</span>
+									<div className="comment-text-left">{fights.text}</div>
+									<div className="comment-like-left ">{fights.like_count}</div>
+									<button className="comment-votes-left">추천</button>
 								</div>
-							</div>
-						) : (
-							<div className="comment-name-right" key={fightId}>
-								<span className="comment-user-right">{fight.nickname}</span>
-								<span className="comment-text-right">{fight.text}</span>
-								<button
-									className="comment-votes-right"
-									onClick={() => thumbUp()}
-								>
-									추천수 {}
-								</button>
-							</div>
-						);
-					}
-				})} */}
+							);
+						else {
+							return (
+								<div className="comment-name-right">
+									<div className="comment-nickname-right ">
+										{fights.user.nickname}
+									</div>
+									<span className="comment-time-right">{fights.createdAt}</span>
+									<div className="comment-text-right">{fights.text}</div>
+									<div className="comment-like-right">{fights.like_count}</div>
+									<button className="comment-votes-right ">추천</button>
+								</div>
+							);
+						}
+					})
+				)}
+			</div>
 
-			{/* <WriteComment
-				fight={fight}
-				// viewCommnetHandler={viewCommnetHandler}
-				accessToken={accessToken}
+			<WriteComment
 				fightId={fightId}
-			/> */}
+				accessToken={accessToken}
+				viewCommnetHandler={viewCommnetHandler}
+				setLoad={setLoad}
+			></WriteComment>
 		</div>
 	);
 }

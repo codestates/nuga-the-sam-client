@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ChangeNickNmaeModal from "./ChangeNickNameModal.js";
+import { Link } from "react-router-dom";
 import "../style/Mypage.css";
-
-function MyPage({ userInfo, myFights, myComments, accessToken, setUserInfo }) {
+import axios from "axios";
+function MyPage({ userInfo, accessToken, setUserInfo }) {
 	//* 닉네임 변경하는 모달창 상태
 	const [ischangeNick, setisChangeNick] = useState(false);
 
@@ -11,11 +12,26 @@ function MyPage({ userInfo, myFights, myComments, accessToken, setUserInfo }) {
 		setisChangeNick(true);
 	};
 
+	useEffect(() => {
+		axios
+			.get("https://s.nugathesam.com/users", {
+				headers: { Authorization: `Bearer ${accessToken}` },
+			})
+			.then((res) => {
+				setUserInfo(res.data);
+				// console.log(res.data);
+			})
+
+			.catch((err) => {
+				console.log("무언가 잘못됐다.");
+			});
+	}, []);
 	return (
 		<div>
 			<div className="mypage-userInfo-container">
 				<div className="mypage-userInfo-body">
 					<div className="mypage-userInfo-title">My Profile</div>
+					<div>키미노 나마에와</div>
 					<div className="mypage-userInfo-text">{userInfo.nickname}</div>
 					<button
 						className="mypage-userInfo-changeButton"
@@ -34,27 +50,51 @@ function MyPage({ userInfo, myFights, myComments, accessToken, setUserInfo }) {
 					) : (
 						<div></div>
 					)}
-					<div className="mypage-userInfo-text">{userInfo.createdAt}</div>
+					<div>가입일</div>
+					<div className="mypage-userInfo-text"> {userInfo.createdAt}</div>
 				</div>
 			</div>
 
 			<div className="mypage-userInfo-container">
 				<div className="mypage-userInfo-body">
 					<div className="mypage-userInfo-title">My Fights</div>
-					<div className="mypage-userInfo-text">손오공 vs 천진반</div>
-					<div className="mypage-userInfo-text">뭉치 vs 똘똘이</div>
-					<div className="mypage-userInfo-text">사자 vs 호랑이 </div>
+					{!userInfo.fights.length ? (
+						<div>쫄보세요? 신청한 싸움이 없네요</div>
+					) : (
+						userInfo.fights.map((fights) => (
+							<Link to={`/getfight/${fights.id}`} key={fights.id}>
+								<button className="newFight-name" key={fights.id}>
+									<span className="fight-title">{fights.left}</span>
+									<span className="newFight-vs"> vs </span>
+									<span className="fight-title">{fights.right}</span>
+									<div></div>
+									<span className="fight-votes">{fights.left_vote_count}</span>
+									<span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
+									<span className="fight-votes">{fights.right_vote_count}</span>
+								</button>
+							</Link>
+						))
+					)}
 				</div>
 			</div>
 
 			<div className="mypage-userInfo-container">
 				<div className="mypage-userInfo-body">
 					<div className="mypage-userInfo-title">My Comments</div>
-					<div className="mypage-userInfo-text">인간이 치타 3초컷 한다</div>
-					<div className="mypage-userInfo-text">
-						천진반 빡빡이 이미 죽어서 결투장에 나오지도 못함
-					</div>
-					<div className="mypage-userInfo-text">이딴 거 누가 생각했냐? </div>
+					{!userInfo.comments.length ? (
+						<div>쫄보세요? 작성한 댓글이 없네요</div>
+					) : (
+						userInfo.comments.map((comments) => (
+							<Link
+								to={`/getfight/${comments.fight_id}`}
+								key={comments.fight_id}
+							>
+								<div className="mypage-comments-name" key={comments.fight_id}>
+									<span className="mypage-comments-title">{comments.text}</span>
+								</div>
+							</Link>
+						))
+					)}
 				</div>
 			</div>
 		</div>

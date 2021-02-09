@@ -14,12 +14,13 @@ function GetFight(props) {
 	useEffect(() => {
 		const url = `https://s.nugathesam.com/fights/${id}`;
 		axios.get(url).then((res) => {
+			console.log(res.data, "다시됩니까?");
 			setFight(res.data);
 			setLoad(false);
 		});
 	}, []);
 
-	console.log(fight, "Get fight입니다");
+	// console.log(fight, "Get fight입니다");
 	/* 
 	이제 만들것
 	토큰 없을 때 클릭시 로그인 창으로 가게끔 하기
@@ -36,15 +37,17 @@ function GetFight(props) {
 			{isLoad ? (
 				<Loading />
 			) : (
-				<div className="fightContainer">
-					<div className="leftContainer">
-						<div className="leftFight">{fight.left}</div>
-						<div className="leftVote">{fight.left_vote_count}</div>
-					</div>
-					<div className="vs">vs</div>
-					<div className="rightContainer">
-						<div className="rightFight">{fight.right}</div>
-						<div className="rightVote">{fight.right_vote_count}</div>
+				<div>
+					<div className="fightContainer">
+						<div className="leftContainer">
+							<div className="leftFight">{fight.left}</div>
+							<div className="leftVote">{fight.left_vote_count}</div>
+						</div>
+						<div className="vs">vs</div>
+						<div className="rightContainer">
+							<div className="rightFight">{fight.right}</div>
+							<div className="rightVote">{fight.right_vote_count}</div>
+						</div>
 					</div>
 				</div>
 			)}
@@ -53,6 +56,7 @@ function GetFight(props) {
 				accessToken={props.accessToken}
 				fight={fight}
 				setFight={setFight}
+				setLoad={setLoad}
 			></ViewComment>
 		</div>
 	);
