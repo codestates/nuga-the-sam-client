@@ -10,7 +10,9 @@ function GetFight(props) {
 	const [isLoad, setLoad] = useState(true);
 	const [alreadyVote, setAlreadyVote] = useState(false);
 	const id = props.match.params.id;
-	const token = props.accessToken;
+	// console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
+
+	console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
 	useEffect(() => {
 		setLoad(true);
@@ -108,6 +110,7 @@ function GetFight(props) {
 				fight={fight}
 				setFight={setFight}
 				setLoad={setLoad}
+				userInfo={props.userInfo}
 			></ViewComment>
 		</div>
 	);
