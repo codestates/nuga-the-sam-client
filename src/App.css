@@ -3,14 +3,18 @@ body {
 	padding: 0;
 	text-align: center;
 }
+
+
 a {
-	text-decoration: none;
 	cursor: pointer;
-	color: black;
+	text-decoration: none;
 }
+
 button {
 	cursor: pointer;
 }
+
+
 .fightContainer {
 	display: flex;
 	justify-content: center;
