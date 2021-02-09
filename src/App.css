@@ -4,6 +4,15 @@ body {
 	text-align: center;
 }
 
+a {
+	cursor: pointer;
+	text-decoration: none;
+}
+
+button {
+	cursor: pointer;
+}
+
 .fightContainer {
 	display: flex;
 	justify-content: center;
