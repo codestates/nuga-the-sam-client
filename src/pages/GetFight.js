@@ -5,11 +5,14 @@ import Loading from "../components/Loading";
 import "../style/GetFight.css";
 import ViewComment from "../components/ViewComment";
 
-function GetFight(props, userInfo) {
+
+function GetFight(props) {
 	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
 	const id = props.match.params.id;
 	// console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
+
+	console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
 	useEffect(() => {
 		setLoad(true);
@@ -22,6 +25,9 @@ function GetFight(props, userInfo) {
 			setFight(res.data);
 		});
 	}, []);
+
+
+	console.log(fight);
 
 	/* 
 	이제 만들것
