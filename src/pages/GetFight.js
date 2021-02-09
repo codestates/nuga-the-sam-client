@@ -9,18 +9,21 @@ function GetFight(props) {
 	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
 	const id = props.match.params.id;
+
 	console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
 	useEffect(() => {
 		setLoad(true);
 		const url = `https://s.nugathesam.com/fights/${id}`;
 		axios.get(url).then((res) => {
+			console.log(res.data, "다시됩니까?");
 			setFight(res.data);
 
 			setLoad(false);
 			setFight(res.data);
 		});
 	}, []);
+
 	console.log(fight);
 
 	/* 
@@ -68,9 +71,15 @@ function GetFight(props) {
 							<div className="rightVote">{fight.right_vote_count}</div>
 						</div>
 					</div>
-					<ViewComment fight={fight} />
 				</div>
 			)}
+			<ViewComment
+				fightId={id}
+				accessToken={props.accessToken}
+				fight={fight}
+				setFight={setFight}
+				setLoad={setLoad}
+			></ViewComment>
 		</div>
 	);
 }

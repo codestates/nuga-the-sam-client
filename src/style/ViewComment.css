@@ -1,0 +1,58 @@
+.comment-container {
+	width: 100%;
+	height: 100%;
+}
+.comment-name-left {
+	margin-left: -500px;
+	color: red;
+}
+
+.comment-nickname-left {
+	margin-left: -500px;
+	color: red;
+}
+
+.comment-text-left {
+	margin-left: -500px;
+	color: red;
+}
+
+.comment-time-left {
+	margin-left: -500px;
+	color: red;
+}
+.comment-votes-left {
+	color: red;
+	margin-left: -500px;
+}
+.comment-like-left {
+	color: red;
+	margin-left: -500px;
+}
+
+.comment-name-right {
+	color: blue;
+}
+
+.comment-nickname-right {
+	margin-left: 500px;
+	color: blue;
+}
+
+.comment-text-right {
+	margin-left: 500px;
+	color: blue;
+}
+.comment-time-right {
+	margin-left: 500px;
+	color: blue;
+}
+
+.comment-votes-right {
+	margin-left: 500px;
+	color: blue;
+}
+.comment-like-right {
+	margin-left: 500px;
+	color: blue;
+}
