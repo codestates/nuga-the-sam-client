@@ -6,33 +6,27 @@ function WriteComment({
 	fightId,
 	accessToken,
 	fight,
-	setLoad,
+	side,
 }) {
 	const [writeComment, setWriteComment] = useState("");
 
 	const submitComment = () => {
-		console.log(fightId, "파이트 아이디");
-		console.log(writeComment, "댓글 내용");
-		console.log(accessToken, "토큰");
-		// setLoad(true);
+
 		axios
 			.post(
 				`https://s.nugathesam.com/fights/${fightId}/comments`,
 				{
 					text: writeComment,
-					side: `left`,
+					side: side,
 				},
 				{ headers: { Authorization: `Bearer ${accessToken}` } },
 			)
 			.then((res) => {
-				// console.log(res.data, "너 누구야??????");
-
 				viewCommnetHandler();
 			})
 			.catch((err) => {
 				console.log(err);
 			});
-		console.log(fightId);
 	};
 
 	return (

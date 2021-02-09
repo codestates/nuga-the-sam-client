@@ -10,22 +10,24 @@ function GetFight(props) {
 	const [isLoad, setLoad] = useState(true);
 	const [alreadyVote, setAlreadyVote] = useState(false);
 	const id = props.match.params.id;
-	const token = props.accessToken;
 
 	useEffect(() => {
 		setLoad(true);
-		console.log(
-			"Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중",
-		);
+
 		const url = `https://s.nugathesam.com/fights/${id}`;
 		axios
 			.get(url, { headers: { Authorization: `bearer ${token}` } })
 			.then((res) => {
 				setFight(res.data);
 				setLoad(false);
+				console.log(
+					res.data,
+					"Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중",
+				);
 			});
 	}, []);
 
+	// console.log(fight);
 	/* 
 	이제 만들것
 	토큰 없을 때 클릭시 로그인 창으로 가게끔 하기

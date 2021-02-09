@@ -1,15 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { withRouter } from "react-router-dom";
 import WriteComment from "./WriteComment.js";
 import "../style/ViewComment.css";
 import ModifyComment from "../pages/ModifyComment.js";
-
+import DeleteComments from "./DeleteComments.js";
 function ViewComment({
 	accessToken,
 	fightId,
 	fight,
-	history,
 	setLoad,
 	setFight,
 	userInfo,
@@ -18,17 +16,21 @@ function ViewComment({
 
 	const viewCommnetHandler = () => {
 		const url = `https://s.nugathesam.com/fights/${fightId}`;
-		axios.get(url).then((res) => {
-			setFight(res.data);
-			setLoad(false);
-		});
+		axios
+			.get(url, { headers: { Authorization: `bearer ${accessToken}` } })
+			.then((res) => {
+				setFight(res.data);
+				setLoad(false);
+			});
 	};
 	useEffect(() => {
 		const url = `https://s.nugathesam.com/fights/${fightId}`;
-		axios.get(url).then((res) => {
-			setFight(res.data);
-			setLoad(false);
-		});
+		axios
+			.get(url, { headers: { Authorization: `bearer ${accessToken}` } })
+			.then((res) => {
+				setFight(res.data);
+				setLoad(false);
+			});
 	}, []);
 
 	const modifyCommentButton = (e) => {
@@ -67,15 +69,23 @@ function ViewComment({
 										{!isModify ? (
 											<div></div>
 										) : (
-											<ModifyComment
-												setisModify={setisModify}
-												fightId={fightId}
-												commentId={fights.id}
-												accessToken={accessToken}
-												setFight={setFight}
-											></ModifyComment>
+											<>
+												<ModifyComment
+													setisModify={setisModify}
+													fightId={fightId}
+													commentId={fights.id}
+													accessToken={accessToken}
+													setFight={setFight}
+												></ModifyComment>
+											</>
 										)}
-										<button className="comment-delete-left">삭제</button>
+										<DeleteComments
+											commentId={fights.id}
+											fightId={fightId}
+											accessToken={accessToken}
+											setFight={setFight}
+											setLoad={setLoad}
+										></DeleteComments>
 									</div>
 								);
 							} else {
@@ -110,8 +120,32 @@ function ViewComment({
 											{fights.like_count}
 										</div>
 										<button className="comment-votes-right ">추천</button>
-										<button className="comment-modify-right">수정</button>
-										<button className="comment-delete-right">삭제</button>
+										<button
+											className="comment-modify-right"
+											onClick={(e) => modifyCommentButton(e)}
+										>
+											수정
+										</button>
+										{!isModify ? (
+											<div></div>
+										) : (
+											<div>
+												<ModifyComment
+													setisModify={setisModify}
+													fightId={fightId}
+													commentId={fights.id}
+													accessToken={accessToken}
+													setFight={setFight}
+												></ModifyComment>
+											</div>
+										)}
+										<DeleteComments
+											commentId={fights.id}
+											fightId={fightId}
+											accessToken={accessToken}
+											setFight={setFight}
+											setLoad={setLoad}
+										></DeleteComments>
 									</div>
 								);
 							} else {
@@ -142,9 +176,10 @@ function ViewComment({
 				viewCommnetHandler={viewCommnetHandler}
 				setLoad={setLoad}
 				fight={fight}
+				side={fight.vote_where}
 			></WriteComment>
 		</div>
 	);
 }
 
-export default withRouter(ViewComment);
+export default ViewComment;
