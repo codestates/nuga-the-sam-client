@@ -29,3 +29,30 @@
 	left: 0;
 	z-index: 1;
 }
+.emailContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.nicknameContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.passwordContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.checkPassContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.checkIcon {
+	color: green;
+}
+.closeIcon {
+	color: #c62828;
+}

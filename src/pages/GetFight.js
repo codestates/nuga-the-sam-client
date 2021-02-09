@@ -3,10 +3,11 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Loading from "../components/Loading";
 import "../style/GetFight.css";
+import ViewComment from "../components/ViewComment";
+
 function GetFight(props) {
 	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
-
 	const id = props.match.params.id;
 	console.log(props.accessToken, "dsfasdlfkjdsfkljsalkfj");
 
@@ -14,12 +15,13 @@ function GetFight(props) {
 		setLoad(true);
 		const url = `https://s.nugathesam.com/fights/${id}`;
 		axios.get(url).then((res) => {
-			console.log(res.data);
+			setFight(res.data);
+
 			setLoad(false);
 			setFight(res.data);
-			console.log(fight);
 		});
 	}, []);
+	console.log(fight);
 
 	/* 
 	이제 만들것
@@ -49,22 +51,24 @@ function GetFight(props) {
 			// axios.put(url);
 		}
 	};
-
 	return (
 		<div>
 			{isLoad ? (
 				<Loading />
 			) : (
-				<div className="fightContainer">
-					<div className="leftContainer" onClick={handleLeftVoteClick}>
-						<div className="leftFight">{fight.left}</div>
-						<div className="leftVote">{fight.left_vote_count}</div>
+				<div>
+					<div className="fightContainer">
+						<div className="leftContainer" onClick={handleLeftVoteClick}>
+							<div className="leftFight">{fight.left}</div>
+							<div className="leftVote">{fight.left_vote_count}</div>
+						</div>
+						<div className="vs">vs</div>
+						<div className="rightContainer" onClick={handleRightVoteClick}>
+							<div className="rightFight">{fight.right}</div>
+							<div className="rightVote">{fight.right_vote_count}</div>
+						</div>
 					</div>
-					<div className="vs">vs</div>
-					<div className="rightContainer" onClick={handleRightVoteClick}>
-						<div className="rightFight">{fight.right}</div>
-						<div className="rightVote">{fight.right_vote_count}</div>
-					</div>
+					<ViewComment fight={fight} />
 				</div>
 			)}
 		</div>
