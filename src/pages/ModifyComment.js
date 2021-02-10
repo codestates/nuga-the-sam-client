@@ -6,16 +6,20 @@ import { withRouter } from "react-router-dom";
 function ModifyComment({
 	setisModify,
 	fightId,
-	commentId,
 	accessToken,
 	setFight,
+	fight,
+	realCommentId,
 }) {
 	const [Comment, setComment] = useState("");
 
+	const [commentId, setcommentId] = useState("");
+
 	const handleSetComment = (e) => {
+		setcommentId(fight);
 		setComment(e.target.value);
 		console.log(
-			commentId,
+			realCommentId,
 			"코멘트 아이디",
 			fightId,
 			"파이트 아이디",
@@ -26,7 +30,7 @@ function ModifyComment({
 	const ModifyComment = () => {
 		axios
 			.put(
-				`https://s.nugathesam.com/fights/${fightId}/comments/${commentId}/modify`,
+				`https://s.nugathesam.com/fights/${fightId}/comments/${realCommentId}/modify`,
 				{
 					text: Comment,
 				},
