@@ -3,6 +3,8 @@ import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import Loading from "../components/Loading";
 import "../style/Login.css";
+import nugatheSam from "../img/nugatheSam.png";
+import LoadingPng from "../img/Loading.png";
 function Login({ loginHandler, issueAccessToken, history }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -85,33 +87,49 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 	return (
 		<div className="whiteBackground">
 			{isLoad ? (
-				<Loading isLoad={isLoad} />
+				<div className="LoadingBackground">
+					<img src={LoadingPng} width="400px"></img>
+				</div>
 			) : (
-				<div className="loginModal">
-					<div className="loginHeader">로그인</div>
-					<div className="loginContent">
-						<input
-							type="text"
-							value={email}
-							onChange={onChangeEmail}
-							placeholder="이메일"
-						/>
-						<br />
-						<input
-							type="password"
-							value={password}
-							onChange={onChangePass}
-							placeholder="비밀번호"
-							onKeyPress={handleKeyPress}
-						/>
-						<br />
-						<button onClick={googleLoginHandler}>구글 로그인</button>
-						<button onClick={loginRequestHandler}>로그인</button>
-						<br />
-						{errorMessage && <div>{errorMessage}</div>}
-						<Link to="signup">회원가입</Link>
-						<div onClick={closeModal}>
-							<button>닫기</button>
+				// <Loading isLoad={isLoad} />
+				<div className="loginModal-container">
+					<div className="loginModal">
+						<div className="LoginLogoBox">
+							<img className="LoginLogo" src={nugatheSam} width="200px"></img>
+						</div>
+
+						<div className="loginContent">
+							<input
+								className="logininput"
+								type="text"
+								value={email}
+								onChange={onChangeEmail}
+								placeholder="이메일"
+							/>
+							<br />
+							<input
+								className="logininput"
+								type="password"
+								value={password}
+								onChange={onChangePass}
+								placeholder="비밀번호"
+								onKeyPress={handleKeyPress}
+							/>
+							<br />
+							<button className="loginbutton" onClick={googleLoginHandler}>
+								구글 로그인
+							</button>
+							<button className="loginbutton" onClick={loginRequestHandler}>
+								로그인
+							</button>
+							<br />
+							{errorMessage && <div>{errorMessage}</div>}
+							<Link to="signup" className="login-signup">
+								회원가입
+							</Link>
+							<div className="loginclose" onClick={closeModal}>
+								<button>닫기</button>
+							</div>
 						</div>
 					</div>
 				</div>
