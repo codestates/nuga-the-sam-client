@@ -3,7 +3,6 @@ import ChangeNickNmaeModal from "./ChangeNickNameModal.js";
 import { Link } from "react-router-dom";
 import "../style/Mypage.css";
 import axios from "axios";
-const moment = require("moment");
 function MyPage({ userInfo, accessToken, setUserInfo }) {
 	//* 닉네임 변경하는 모달창 상태
 	const [ischangeNick, setisChangeNick] = useState(false);
@@ -69,7 +68,7 @@ function MyPage({ userInfo, accessToken, setUserInfo }) {
 						<div className="mypage-userInfo-body">
 							<div className="mypage-userInfo-title">My Fights</div>
 							{!userInfo.fights.length ? (
-									<div>쫄보세요? 신청한 싸움이 없네요</div>
+								<div>쫄보세요? 신청한 싸움이 없네요</div>
 							) : (
 								userInfo.fights.map((fights) => (
 									<Link to={`/getfight/${fights.id}`}>
