@@ -2,9 +2,14 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: center;
+	max-width: 2000px;
 }
-
-
+#Master body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	max-width: 2000px;
+}
 a {
 	cursor: pointer;
 	text-decoration: none;
@@ -13,7 +18,6 @@ a {
 button {
 	cursor: pointer;
 }
-
 
 .fightContainer {
 	display: flex;
