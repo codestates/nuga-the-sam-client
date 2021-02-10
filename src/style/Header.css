@@ -1,9 +1,12 @@
 #header-container {
 	display: flex;
+	border: solid #7a62acde;
+	height: 300px;
 	justify-content: center;
 	align-items: center;
 	/* border-bottom: solid #000000de 1.5px; */
 	/* height: 60px; */
+
 }
 #header-body {
 	display: flex;
