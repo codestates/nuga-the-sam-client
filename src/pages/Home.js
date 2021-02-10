@@ -7,6 +7,7 @@ import { category } from "../datas/categorydata.js";
 import HotFights from "../components/HotFights.js";
 import Category from "../components/category.js";
 import MakeFights from "../components/makefights.js";
+import Loading from "../components/Loading";
 // import ViewComment from "../components/ViewComment";
 
 function Home({ accessToken, history, handleNewFightClick }) {
@@ -56,6 +57,7 @@ function Home({ accessToken, history, handleNewFightClick }) {
 
 	return (
 		<>
+	
 			<MakeFights category={CategoryData} />
 			<Category
 				category={CategoryData}

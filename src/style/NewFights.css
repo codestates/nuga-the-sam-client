@@ -2,11 +2,11 @@
 	display: table;
 	margin: 0 auto;
 	width: 60%;
-	height: 100vh;
+	height: 100%;
+	border-top: solid black 1px;
 }
 
 #fights-list-body {
-	border: solid #7a62acde;
 	display: table-cell;
 	width: 100%;
 	height: 100%;
@@ -14,50 +14,112 @@
 }
 
 #fights-list-title {
-	margin-top: 30px;
+	padding-top: 50px;
+	margin-bottom: 20px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	font-size: 30px;
+	font-weight: bold;
 }
 
 .Loding {
-	color: red;
+	padding-top: 50px;
+	color: rgb(255, 0, 0);
+	font-size: 20px;
 }
 
 .newFight-name {
-	width: 25%;
-	margin: 2%;
-	height: 23%;
-	background: #3f3f3f;
-	color: #fff;
+	width: 220px;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	height: 150px;
+	background-color: rgb(46, 46, 46);
+	/* background: -webkit-linear-gradient(
+			rgba(135, 60, 255, 1),
+			rgba(135, 60, 255, 0) 0%
+		),
+		-webkit-linear-gradient(-45deg, rgba(68, 68, 68, 0.9) 50%, rgb(39, 39, 39)
+					0%); */
+
+	color: rgb(255, 255, 255);
 	border: none;
 	position: relative;
 	font-size: 100%;
 	cursor: pointer;
 	outline: none;
 	overflow: hidden;
+	border-radius: 20px;
+	transition: all 0.5s;
 }
 
 .newFight-name:hover {
 	top: -2px;
-	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+	border: solid rgb(54, 54, 54) 2px;
+	color: rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
+	transition: all 0.5s;
 }
 
 .newFight-vs {
-	color: red;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 60px;
 }
 
-.fight-title {
-	color: rgb(11, 255, 255);
+.fight-left-title {
+	display: flex;
+	position: absolute;
+	top: 15%;
+	left: 10%;
+	box-sizing: border-box;
+	font-weight: bold;
 }
 
-.fight-votes {
-	color: rgb(255, 0, 212);
+.fight-right-title {
+	display: flex;
+	position: absolute;
+	bottom: 15%;
+	right: 10%;
+	font-weight: bold;
+}
+
+.fight-left-votes {
+	display: flex;
+	position: absolute;
+	top: 30%;
+	left: 10%;
+}
+
+.fight-right-votes {
+	display: flex;
+	position: absolute;
+
+	bottom: 30%;
+	right: 10%;
 }
 
 .moreButton {
-	position: absolute;
-	margin: 0 auto;
-	color: rgb(255, 0, 212);
+	background-color: white;
+	position: relative;
+	margin-top: 10px;
+	bottom: 10px;
+	color: rgb(10, 10, 10);
+	border: 0;
+	outline: 0;
+	font-size: 15px;
+	transition: all 0.5s;
+}
+
+.moreButton:hover {
+	/* box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5); */
+	color: rgb(0, 0, 0);
+	/* background-color: rgb(0, 0, 0); */
+	font-weight: bold;
+	font-size: 15.5px;
+	transition: all 0.5s;
 }

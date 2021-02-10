@@ -1,31 +1,45 @@
-.loginModal {
-	border: 1px solid blue;
-	align-content: center;
-	width: 40%;
-	margin-left: -20%;
-	height: 25%;
-	position: fixed;
-	z-index: 2;
-	top: 30%;
-	left: 50%;
-	border-radius: 5%;
+.loginModal-container {
+	display: grid;
+	place-items: center;
+	width: 100%;
+	height: 80%;
 }
-.loginHeader {
-	color: aqua;
-	text-align: center;
-	margin: auto;
-	font-size: 20px;
-	font-weight: bold;
-	height: auto;
+.loginModal {
+	display: flex;
+	flex-direction: column;
+	border: solid black 2px;
+	width: 500px;
+	height: 450px;
+	border-radius: 15%;
 }
 
-.whiteBackground {
-	position: absolute;
-	content: "";
-	width: 100%;
+.LoginLogoBox {
+	display: flex;
+
+	justify-content: center;
+}
+.LoginLogo {
+	display: flex;
+}
+.loginContent {
+	color: aqua;
+	margin-top: 70px;
+}
+.logininput {
+	margin-bottom: 20px;
+	border: none;
+	border-bottom: solid black 2px;
+}
+.loginbutton {
+}
+.login-signup {
+}
+
+.loginclose {
+}
+.LoadingBackground {
 	height: 100%;
-	background-color: #fff;
-	top: 0;
-	left: 0;
-	z-index: 1;
+	width: 100%;
+	display: grid;
+	place-items: center;
 }

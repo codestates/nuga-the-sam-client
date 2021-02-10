@@ -1,9 +1,10 @@
 import React from "react";
 import "../style/Loading.css";
+import LoadingPng from "../img/Loading.png";
 function Loading() {
 	return (
-		<div className="whiteBackground">
-			<div className="loadingModal">로딩중입니다</div>
+		<div id="whiteBackground">
+			<img className="Loadingimg" src={LoadingPng} width="300px"></img>
 		</div>
 	);
 }

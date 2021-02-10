@@ -1,4 +1,4 @@
-.loadingModal {
+/* .loadingModal {
 	display: flex;
 	border: 1px solid blue;
 	justify-content: center;
@@ -11,15 +11,18 @@
 	left: 50%;
 	margin-left: -20%;
 	background-color: pink;
+} */
+
+#whiteBackground {
+	position: absolute;
+	width: 1000px;
+	height: 1000px;
+	background-color: rgba(255, 255, 255, 0.9);
+	z-index: 1;
 }
 
-.whiteBackground {
-	position: absolute;
-	content: "";
-	width: 100%;
-	height: 100%;
-	background-color: #fff;
-	top: 0;
-	left: 0;
-	z-index: 1;
+.Loadingimg {
+	position: fixed;
+	top: 33%;
+	left: 40%;
 }
