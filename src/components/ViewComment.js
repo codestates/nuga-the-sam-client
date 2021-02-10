@@ -16,6 +16,7 @@ function ViewComment({
 }) {
 	const [isModify, setisModify] = useState(false);
 
+	const [realCommentId, setRealCommentId] = useState("");
 	const viewCommnetHandler = () => {
 		const url = `https://s.nugathesam.com/fights/${fightId}`;
 		axios
@@ -35,7 +36,8 @@ function ViewComment({
 			});
 	}, []);
 
-	const modifyCommentButton = (e) => {
+	const modifyCommentButton = (fights) => {
+		setRealCommentId(fights);
 		setisModify(true);
 	};
 
@@ -74,23 +76,11 @@ function ViewComment({
 
 										<button
 											className="comment-modify-left"
-											onClick={(e) => modifyCommentButton(e)}
+											onClick={(e) => modifyCommentButton(fights.id)}
 										>
 											수정
 										</button>
-										{!isModify ? (
-											<div></div>
-										) : (
-											<>
-												<ModifyComment
-													setisModify={setisModify}
-													fightId={fightId}
-													commentId={fights.id}
-													accessToken={accessToken}
-													setFight={setFight}
-												></ModifyComment>
-											</>
-										)}
+
 										<DeleteComments
 											commentId={fights.id}
 											fightId={fightId}
@@ -146,11 +136,11 @@ function ViewComment({
 										</>
 										<button
 											className="comment-modify-right"
-											onClick={(e) => modifyCommentButton(e)}
+											onClick={(e) => modifyCommentButton(fights.id)}
 										>
 											수정
 										</button>
-										{!isModify ? (
+										{/* {!isModify ? (
 											<div></div>
 										) : (
 											<div>
@@ -162,7 +152,7 @@ function ViewComment({
 													setFight={setFight}
 												></ModifyComment>
 											</div>
-										)}
+										)} */}
 										<DeleteComments
 											commentId={fights.id}
 											fightId={fightId}
@@ -195,7 +185,20 @@ function ViewComment({
 					})
 				)}
 			</div>
-
+			{!isModify ? (
+				<div></div>
+			) : (
+				<>
+					<ModifyComment
+						fight={fight}
+						setisModify={setisModify}
+						fightId={fightId}
+						accessToken={accessToken}
+						setFight={setFight}
+						realCommentId={realCommentId}
+					></ModifyComment>
+				</>
+			)}
 			<WriteComment
 				fightId={fightId}
 				accessToken={accessToken}
