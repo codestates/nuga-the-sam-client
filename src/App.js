@@ -101,7 +101,7 @@ function App() {
 						}}
 					/>
 				</Switch>
-				<Footer></Footer>
+				<Footer />
 			</Router>
 		</div>
 	);

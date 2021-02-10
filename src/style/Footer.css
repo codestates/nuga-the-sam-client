@@ -7,4 +7,6 @@
 	font-size: 15px;
 	border-top: solid black 2px;
 	font-weight: bold;
+	position: sticky;
+	bottom: 0;
 }

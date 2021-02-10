@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 import Loading from "../components/Loading";
 import "../style/Login.css";
+import googleLogin from "../img/googleLogin.png";
 import nugatheSam from "../img/nugatheSam.png";
 import LoadingPng from "../img/Loading.png";
 function Login({ loginHandler, issueAccessToken, history }) {
@@ -85,7 +86,7 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 	};
 
 	return (
-		<div className="whiteBackground">
+		<div className="greyBackground">
 			{isLoad ? (
 				<div className="LoadingBackground">
 					<img src={LoadingPng} width="400px"></img>
@@ -117,8 +118,9 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 							/>
 							<br />
 							<button className="loginbutton" onClick={googleLoginHandler}>
-								구글 로그인
+								<img src={googleLogin} width="100px"></img>
 							</button>
+							<br />
 							<button className="loginbutton" onClick={loginRequestHandler}>
 								로그인
 							</button>
