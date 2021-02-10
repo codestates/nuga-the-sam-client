@@ -1,6 +1,7 @@
 #header-container {
+	display: flex;
 	border: solid #7a62acde;
-	height: 30px;
+	height: 100px;
 }
 #header-body {
 	display: flex;
