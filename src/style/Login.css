@@ -10,7 +10,7 @@
 	border: solid black 2px;
 	width: 500px;
 	height: 450px;
-	border-radius: 15%;
+	background: #f4f4f4;
 }
 
 .LoginLogoBox {
@@ -23,14 +23,19 @@
 }
 .loginContent {
 	color: aqua;
-	margin-top: 70px;
+	margin-top: 30px;
 }
 .logininput {
 	margin-bottom: 20px;
 	border: none;
 	border-bottom: solid black 2px;
+	width: 45%;
+	height: 15%;
+	background: none;
 }
 .loginbutton {
+	background: none;
+	border: none;
 }
 .login-signup {
 }
@@ -42,4 +47,14 @@
 	width: 100%;
 	display: grid;
 	place-items: center;
+}
+.greyBackground {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: #9b0000;
+	top: 0;
+	left: 0;
+	z-index: 1;
 }
