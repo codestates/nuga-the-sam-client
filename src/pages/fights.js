@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import axios from "axios";
 import ModalFight from "./ModalFight.js";
 import "../style/Fights.css";
-
+import vs from "../img/VS.png";
+import left from "../img/left.png";
+import right from "../img/right.png";
+import newFight from "../img/newFight.png";
+import category from "../img/category.png";
 function Fights({ accessToken }) {
 	//* 왼쪽 제목
-	const [leftFights, setLeftFights] = useState(" ");
+	const [leftFights, setLeftFights] = useState("");
 	//* 오른쪽 제목
-	const [rightFights, setRightFights] = useState(" ");
+	const [rightFights, setRightFights] = useState("");
 	//* 카테고리 체크
 	const [checkedCategory, setCheckedCategory] = useState("");
 	//* 정상적으로 포스트 완료시 뜨는 메시지
@@ -71,118 +75,137 @@ function Fights({ accessToken }) {
 
 	return (
 		<>
+			{" "}
+			<div className="vs-title2">
+				<img src={left} alt={left} width="400px"></img>
+			</div>
+			<div className="vs-title3">
+				<img src={right} alt={right} width="400px"></img>
+			</div>
 			<div id="fights-post-container">
 				<div id="fights-post-body">
-					<div id="fights-post-title">새로운 결투</div>
-					<input
+					{/* <div id="fights-post-title">새로운 결투</div> */}
+					<textarea
 						className="leftFights"
 						maxLength="50"
-						type="text"
-						placeholder="그 상대는??"
+						wrap="virtual"
+						placeholder="그 상대는?(최대 50자)"
 						value={leftFights}
 						onChange={(e) => {
 							handleLeftFights(e);
 						}}
-					></input>
-					<div className="vs-title">vs</div>
-					<input
+					></textarea>
+					<div className="vs-title">
+						<img src={vs} alt={vs} width="100px"></img>
+					</div>
+					<textarea
 						className="rightFights"
 						maxLength="50"
-						type="text"
-						placeholder="그 상대는??"
+						wrap="virtual"
+						placeholder="그 상대는?(최대 50자)"
 						value={rightFights}
 						onChange={(e) => {
 							handleRightFights(e);
 						}}
-					></input>
+					></textarea>
+				</div>
+				<div className="category">
+					<img src={category} alt="category" width="150px"></img>
+				</div>
+				<div id="fights-post-category-container">
+					<input
+						type="radio"
+						value="애니메이션"
+						name="category"
+						id="애니메이션"
+						className="post-category"
+						onClick={(e) => {
+							handleFightsCategoty(e);
+						}}
+					/>
+					<label for="애니메이션">애니메이션</label>
+					<input
+						type="radio"
+						value="음식"
+						id="음식"
+						name="category"
+						className="post-category"
+						onClick={(e) => {
+							handleFightsCategoty(e);
+						}}
+					/>
+					<label for="음식">음식</label>
+					<input
+						type="radio"
+						value="일상"
+						id="일상"
+						name="category"
+						className="post-category"
+						onClick={(e) => {
+							handleFightsCategoty(e);
+						}}
+					/>
+					<label for="일상">일상</label>
+					<input
+						type="radio"
+						value="게임"
+						id="게임"
+						name="category"
+						className="post-category"
+						onClick={(e) => {
+							handleFightsCategoty(e);
+						}}
+					/>
+					<label for="게임">게임</label>
+					<input
+						type="radio"
+						value="소설"
+						id="소설"
+						name="category"
+						className="post-category"
+						onClick={(e) => {
+							handleFightsCategoty(e);
+						}}
+					/>
+					<label for="소설">소설</label>
+					<input
+						type="radio"
+						value="스포츠"
+						id="스포츠"
+						name="category"
+						className="post-category"
+						onClick={(e) => {
+							handleFightsCategoty(e);
+						}}
+					/>
+					<label for="스포츠">스포츠</label>
+					<input
+						type="radio"
+						value="철학"
+						id="철학"
+						name="category"
+						className="post-category"
+						onClick={(e) => {
+							handleFightsCategoty(e);
+						}}
+					/>
+					<label for="철학">철학</label>
+				</div>
+				<br></br>
+				<div className="fightErrorMessage">{fightErrorMessage}</div>
+				<br></br>
+
+				<div className="submitButton">
+					<img
+						alt="newFight"
+						src={newFight}
+						width="100px"
+						onClick={(e) => {
+							submitButton(e);
+						}}
+					></img>
 				</div>
 			</div>
-
-			<div id="fights-post-category-container">
-				<div id="fights-post-category-title">카테고리 선택</div>
-				<input
-					type="radio"
-					value="애니메이션"
-					name="category"
-					className="post-category"
-					onClick={(e) => {
-						handleFightsCategoty(e);
-					}}
-				/>
-				{"애니메이션"}
-				<input
-					type="radio"
-					value="음식"
-					name="category"
-					className="post-category"
-					onClick={(e) => {
-						handleFightsCategoty(e);
-					}}
-				/>
-				{"음식"}
-				<input
-					type="radio"
-					value="일상"
-					name="category"
-					className="post-category"
-					onClick={(e) => {
-						handleFightsCategoty(e);
-					}}
-				/>
-				{"일상"}
-				<input
-					type="radio"
-					value="게임"
-					name="category"
-					className="post-category"
-					onClick={(e) => {
-						handleFightsCategoty(e);
-					}}
-				/>
-				{"게임"}
-				<input
-					type="radio"
-					value="소설"
-					name="category"
-					className="post-category"
-					onClick={(e) => {
-						handleFightsCategoty(e);
-					}}
-				/>
-				{"소설"}
-				<input
-					type="radio"
-					value="스포츠"
-					name="category"
-					className="post-category"
-					onClick={(e) => {
-						handleFightsCategoty(e);
-					}}
-				/>
-				{"스포츠"}
-				<input
-					type="radio"
-					value="철학"
-					name="category"
-					className="post-category"
-					onClick={(e) => {
-						handleFightsCategoty(e);
-					}}
-				/>
-				{"철학"}
-			</div>
-			<br></br>
-
-			<div className="fightErrorMessage">{fightErrorMessage}</div>
-			<br></br>
-			<button
-				className="submitButton"
-				onClick={(e) => {
-					submitButton(e);
-				}}
-			>
-				등록
-			</button>
 			{checkSendModal ? (
 				<ModalFight
 					setcheckSendModal={setcheckSendModal}

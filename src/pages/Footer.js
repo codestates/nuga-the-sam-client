@@ -1,5 +1,5 @@
-import { TableFooter } from "@material-ui/core";
-import React, { useState, useEffect } from "react";
+// import { TableFooter } from "@material-ui/core";
+// import React, { useState, useEffect } from "react";
 import "../style/Footer.css";
 
 function Footer() {

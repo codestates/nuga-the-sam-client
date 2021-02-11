@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useState } from "react";
 import "../style/ChangeNickNameModal.css";
 import { withRouter } from "react-router-dom";
-
+import xPng from "../img/RedX.png";
+import check2 from "../img/check2.png";
 function ChangeNickNameModal({
 	setisChangeNick,
 	accessToken,
@@ -74,28 +75,33 @@ function ChangeNickNameModal({
 		<div clssName="ChangeNickNameModal-container">
 			<div className="ChangeNickNameModal-body">
 				{!isLodingnewNickNmae ? (
-					<div>
+					<div claaName="checkclose">
 						<input
 							className="ChangeNickNameBox"
 							type="text"
-							placeholder="새로운 닉네임을 정해보자"
+							placeholder="새로운 별명을 지어보자"
 							value={newNickNmae}
 							onChange={(e) => handleNewNickNmae(e)}
 						></input>
-						<button onClick={() => changeNickName()}> 확인</button>
+						<a className="chagneNickOk" onClick={() => changeNickName()}>
+							<img src={check2} alt={check2} width="25px"></img>
+						</a>
+						<a className="chagneNickOk" onClick={() => setisChangeNick(false)}>
+							<img src={xPng} alt={xPng} width="25px"></img>
+						</a>
 					</div>
 				) : (
 					<>
-						<div className="nickNameError">{nickNameError}</div>
-						<button
-							className="ChangeNickNameButton"
+						<div className="nickNameError2">{nickNameError}</div>
+						<a
+							className="chagneNickOk"
 							onClick={() => {
 								setisLodingnewNickNmae(false);
 								setisChangeNick(false);
 							}}
 						>
-							확인
-						</button>
+							<img src={check2} alt={check2} width="25px"></img>
+						</a>
 					</>
 				)}
 			</div>

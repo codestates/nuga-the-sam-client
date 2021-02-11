@@ -26,7 +26,7 @@ function GetFight(props) {
 					"Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중",
 				);
 			});
-	}, []);
+	}, [id, token]);
 
 	// console.log(fight);
 	/* 

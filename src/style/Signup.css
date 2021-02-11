@@ -1,34 +1,27 @@
-.signUpModal {
-	border: 1px solid blue;
-	align-content: center;
-	width: 80%;
-	margin-left: -40%;
-	height: 40%;
-	position: fixed;
-	z-index: 2;
-	top: 30%;
-	left: 50%;
-	border-radius: 5%;
-}
-.signUpHeader {
-	text-align: center;
-	padding-top: 15px;
-	margin: auto;
-	font-size: 30px;
-	font-weight: bold;
-	height: 20%;
-}
-
-.whiteBackground {
-	position: absolute;
-	content: "";
+.signUpModalContainer {
+	display: grid;
+	place-items: center;
 	width: 100%;
 	height: 100%;
-	background-color: #fff;
-	top: 0;
-	left: 0;
-	z-index: 1;
 }
+.signUpModal {
+	display: flex;
+	flex-direction: column;
+	border: solid black 2px;
+	width: 500px;
+	height: 550px;
+	background: #fdf6f6;
+	border-radius: 5%;
+	margin-top: -37px;
+	align-items: center;
+}
+
+.signup-logo {
+	font-size: 30px;
+	padding: 80px;
+	font-weight: bold;
+}
+
 .emailContainer {
 	display: flex;
 	justify-content: center;
@@ -52,7 +45,66 @@
 }
 .checkIcon {
 	color: green;
+	margin-top: -10px;
+	margin-left: 5px;
 }
 .closeIcon {
 	color: #c62828;
+	margin-top: -10px;
+	margin-left: 5px;
+}
+.signupInputValue1 {
+	margin-bottom: 20px;
+	border: none;
+	border-bottom: solid black 2px;
+	width: 82%;
+	height: 15%;
+	background: none;
+	margin-left: -26px;
+}
+.signupInputValue {
+	margin-bottom: 20px;
+	border: none;
+	border-bottom: solid black 2px;
+	width: 100%;
+	height: 15%;
+	background: none;
+}
+.checkButton {
+	background: none;
+	position: absolute;
+	border: none;
+	margin-left: 260px;
+	margin-top: -10px;
+	cursor: pointer;
+}
+.closeBtn {
+	margin-top: 30px;
+	cursor: pointer;
+}
+.signUpBtn {
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.greyBackground-Signup {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: #021f7c;
+	top: 0;
+	left: 0;
+	z-index: 1;
+}
+
+.whiteBackground-Signup {
+	position: absolute;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	top: 0;
+	left: 0;
+	z-index: 1;
 }

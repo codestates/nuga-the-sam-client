@@ -1,15 +1,16 @@
 import React from "react";
 import "../style/HotFights.css";
 import { Link } from "react-router-dom";
-import Loading from "./Loading";
+// import Loading from "./Loading";
 export default function HotTopic({ hotfights }) {
 	return (
 		<div className="hot-box-container">
 			<div className="hot-box-body">
 				<div className="hot-title">치열하게 싸우는 중</div>
 				{!hotfights ? (
-					<Loading></Loading>
+					<div></div>
 				) : (
+					// <Loading></Loading>
 					hotfights.slice(0, 3).map((fights) => (
 						<Link to={`/getfight/${fights.id}`} key={fights.id}>
 							<button className="hot-Fight-name" key={fights.id}>

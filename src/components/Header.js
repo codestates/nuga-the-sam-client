@@ -14,7 +14,7 @@ function Header({ isLogin, logoutHandler, history }) {
 		<div id="header-container">
 			<div id="header-body">
 				<Link to="/" id="nugathesam-title">
-					<img src={nugatheSam} width="200px"></img>
+					<img src={nugatheSam} alt="nugatheSam" width="200px"></img>
 				</Link>
 				<div id="makefights-container">
 					<div id="makefights-body">

@@ -57,15 +57,36 @@ function Home({ accessToken, history, handleNewFightClick }) {
 
 	return (
 		<>
-	
-			<MakeFights category={CategoryData} />
-			<Category
-				category={CategoryData}
-				handleCategoryClick={handleCategoryClick}
-				handleAllCategoryClick={handleAllCategoryClick}
-			/>
-			<HotFights hotfights={hotfights} />
-			<NewFights fights={fights} handleNewFightClick={handleNewFightClick} />
+			{!fights ? (
+				<>
+					<Loading></Loading>
+					<MakeFights category={CategoryData} />
+					<Category
+						category={CategoryData}
+						handleCategoryClick={handleCategoryClick}
+						handleAllCategoryClick={handleAllCategoryClick}
+					/>
+					<HotFights hotfights={hotfights} />
+					<NewFights
+						fights={fights}
+						handleNewFightClick={handleNewFightClick}
+					/>
+				</>
+			) : (
+				<>
+					<MakeFights category={CategoryData} />
+					<Category
+						category={CategoryData}
+						handleCategoryClick={handleCategoryClick}
+						handleAllCategoryClick={handleAllCategoryClick}
+					/>
+					<HotFights hotfights={hotfights} />
+					<NewFights
+						fights={fights}
+						handleNewFightClick={handleNewFightClick}
+					/>
+				</>
+			)}
 		</>
 	);
 }

@@ -10,11 +10,11 @@ import Header from "./components/Header";
 import Home from "./pages/Home.js";
 import axios from "axios";
 import GetFight from "./pages/GetFight.js";
-import Loading from "./components/Loading";
+// import Loading from "./components/Loading";
 
 function App() {
 	const [isLogin, setLogin] = useState(false);
-	const [userInfo, setUserInfo] = useState({});
+	const [userInfo, setUserInfo] = useState(false);
 	const [accessToken, setToken] = useState("");
 
 	const loginHandler = () => {
