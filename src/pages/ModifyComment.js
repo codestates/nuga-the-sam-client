@@ -25,6 +25,7 @@ function ModifyComment({
 			"파이트 아이디",
 			accessToken,
 			"에세스 토큰",
+			commentId,
 		);
 	};
 	const ModifyComment = () => {

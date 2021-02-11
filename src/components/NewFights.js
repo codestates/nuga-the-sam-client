@@ -1,13 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "../style/NewFights.css";
-import Loading from "./Loading";
+// import Loading from "./Loading";
 export default function NewFights({ fights, handleNewFightClick }) {
 	const [count, setcount] = useState(6);
-	const [hover, setHover] = useState("");
-
-	const [fontColor, setFontColor] = useState("White");
-	const [backGround, setBackGround] = useState("Black");
 
 	//* 더보기 클릭시 9개씩 새로운 글 업로드
 	const handleCount = () => {
@@ -24,8 +20,9 @@ export default function NewFights({ fights, handleNewFightClick }) {
 				<div id="fights-list-title">이제 막 싸우는 중</div>
 				<div></div>
 				{!fights ? (
-					<Loading></Loading>
+					<div></div>
 				) : (
+					// <Loading></Loading>
 					fights.slice(0, count).map((fights) => (
 						<Link to={`/getfight/${fights.id}`} key={fights.id}>
 							<button className="newFight-name" key={fights.id}>

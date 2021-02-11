@@ -4,7 +4,12 @@ import LoadingPng from "../img/Loading.png";
 function Loading() {
 	return (
 		<div id="whiteBackground">
-			<img className="Loadingimg" src={LoadingPng} width="300px"></img>
+			<img
+				className="Loadingimg"
+				alt="LoadingPng"
+				src={LoadingPng}
+				width="300px"
+			></img>
 		</div>
 	);
 }

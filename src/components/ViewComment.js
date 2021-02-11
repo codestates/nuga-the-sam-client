@@ -34,7 +34,7 @@ function ViewComment({
 				setFight(res.data);
 				setLoad(false);
 			});
-	}, []);
+	}, [accessToken, fightId, setFight, setLoad]);
 
 	const modifyCommentButton = (fights) => {
 		setRealCommentId(fights);

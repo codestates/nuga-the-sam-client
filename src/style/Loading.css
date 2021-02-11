@@ -15,7 +15,7 @@
 
 #whiteBackground {
 	position: absolute;
-	width: 1000px;
+	width: 3000px;
 	height: 1000px;
 	background-color: rgba(255, 255, 255, 0.9);
 	z-index: 1;

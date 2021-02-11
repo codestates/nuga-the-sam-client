@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
-import Loading from "../components/Loading";
+// import Loading from "../components/Loading";
 import "../style/Login.css";
-import googleLogin from "../img/googleLogin.png";
+import googleLogin from "../img/googleLogin2.png";
 import nugatheSam from "../img/nugatheSam.png";
 import LoadingPng from "../img/Loading.png";
+import LoginPng from "../img/Login.png";
+import xPng from "../img/x.png";
+import SignUp from "../img/SignUp.png";
+
 function Login({ loginHandler, issueAccessToken, history }) {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -77,7 +81,7 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 				}
 			})
 			.catch((err) => {
-				setError("이메일을 또는 비밀번호를 확인하세요");
+				alert("이메일을 또는 비밀번호를 확인하세요");
 				setIsLoad(false);
 			});
 	};
@@ -89,14 +93,19 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 		<div className="greyBackground">
 			{isLoad ? (
 				<div className="LoadingBackground">
-					<img src={LoadingPng} width="400px"></img>
+					<img src={LoadingPng} alt="LoadingPng" width="400px"></img>
 				</div>
 			) : (
 				// <Loading isLoad={isLoad} />
 				<div className="loginModal-container">
 					<div className="loginModal">
 						<div className="LoginLogoBox">
-							<img className="LoginLogo" src={nugatheSam} width="200px"></img>
+							<img
+								className="LoginLogo"
+								src={nugatheSam}
+								alt="nugatheSam"
+								width="200px"
+							></img>
 						</div>
 
 						<div className="loginContent">
@@ -117,20 +126,38 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 								onKeyPress={handleKeyPress}
 							/>
 							<br />
+							<div className="loginbutton">
+								<img
+									src={LoginPng}
+									alt="LoginPng"
+									onClick={loginRequestHandler}
+									width="150px"
+									// height="37px"
+								></img>
+							</div>
 							<button className="loginbutton" onClick={googleLoginHandler}>
-								<img src={googleLogin} width="100px"></img>
+								<img
+									src={googleLogin}
+									alt="googleLogin"
+									width="200px"
+									// height="45px"
+								></img>
 							</button>
 							<br />
-							<button className="loginbutton" onClick={loginRequestHandler}>
-								로그인
-							</button>
+
 							<br />
-							{errorMessage && <div>{errorMessage}</div>}
-							<Link to="signup" className="login-signup">
-								회원가입
+							{/* {errorMessage && <div>{errorMessage}</div>} */}
+							<Link to="signup">
+								<img
+									className="login-signup"
+									src={SignUp}
+									alt="SignUp"
+									width="155px"
+								></img>
 							</Link>
+
 							<div className="loginclose" onClick={closeModal}>
-								<button>닫기</button>
+								<img src={xPng} alt={xPng} width="35px"></img>
 							</div>
 						</div>
 					</div>

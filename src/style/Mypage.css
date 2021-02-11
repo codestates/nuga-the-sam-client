@@ -1,18 +1,158 @@
 .mypage-userInfo-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
 	color: tomato;
 }
 
 .mypage-userInfo-body {
-	color: rosybrown;
+	height: 100%;
+	overflow: scroll;
+}
+.nickname {
+	float: left;
+	font-size: 25px;
+	margin-top: 15px;
+	color: #073bd9;
+}
+.createdAt {
+	font-size: 25px;
+	margin-top: 15px;
+	color: #073bd9;
+}
+
+.mypage {
+	margin-bottom: 20px;
+	border-bottom: solid black 2px;
+}
+.nickname-body {
+	display: flex;
+	flex-direction: column;
+}
+.mypage-userInfo-body2 {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	overflow: scroll;
+	margin-top: 30px;
+}
+.myfight-title {
+}
+.mypage-myfights-body {
+	width: 50%;
+	height: 370px;
+	overflow: scroll;
+	top: 50px;
 }
 
 .mypage-userInfo-title {
 	color: blue;
+	font-size: 20px;
 }
 
 .mypage-userInfo-text {
 	color: blueviolet;
 }
 .mypage-userInfo-changeButton {
-	color: aqua;
+	background: none;
+	border: none;
+	border-left: solid black 2px;
+	border-right: solid black 2px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	cursor: pointer;
+	width: 40%;
+	margin-left: 95px;
+	font-size: 15px;
+}
+
+.newFight-name2 {
+	width: 180px;
+	margin-top: 20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	height: 130px;
+	background-color: rgb(46, 46, 46);
+	/* background: -webkit-linear-gradient(
+			rgba(135, 60, 255, 1),
+			rgba(135, 60, 255, 0) 0%
+		),
+		-webkit-linear-gradient(-45deg, rgba(68, 68, 68, 0.9) 50%, rgb(39, 39, 39)
+					0%); */
+
+	color: rgb(255, 255, 255);
+	border: none;
+	position: relative;
+	font-size: 100%;
+	cursor: pointer;
+	outline: none;
+	overflow: hidden;
+	border-radius: 20px;
+	transition: all 0.5s;
+}
+
+.newFight-name2:hover {
+	top: -2px;
+	box-shadow: 0 4px 5px rgba(0, 0, 0, 0.5);
+	border: solid rgb(54, 54, 54) 2px;
+	color: rgb(0, 0, 0);
+	background-color: rgb(255, 255, 255);
+	transition: all 0.5s;
+}
+
+.newFight-vs2 {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 45px;
+}
+
+.fight-left-title2 {
+	display: flex;
+	position: absolute;
+	top: 15%;
+	left: 10%;
+	box-sizing: border-box;
+	font-weight: bold;
+}
+
+.fight-right-title2 {
+	display: flex;
+	position: absolute;
+	bottom: 15%;
+	right: 10%;
+	font-weight: bold;
+}
+
+.fight-left-votes2 {
+	display: flex;
+	position: absolute;
+	top: 30%;
+	left: 10%;
+}
+
+.fight-right-votes2 {
+	display: flex;
+	position: absolute;
+
+	bottom: 30%;
+	right: 10%;
+}
+
+.mypage-comments-title {
+	color: black;
+	margin-top: 5px;
+	border-bottom: solid black 1px;
+}
+
+.mypage-comments-name {
+	margin-bottom: 20px;
+}
+.mycomments-title {
+	margin-bottom: 20px;
 }

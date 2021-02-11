@@ -5,6 +5,10 @@ import CancelIcon from "@material-ui/icons/Cancel";
 import Loading from "../components/Loading";
 import axios from "axios";
 import "../style/Signup.css";
+import SignUp from "../img/SignUp.png";
+import xPng from "../img/x.png";
+import submit from "../img/submit.png";
+import check from "../img/check.png";
 
 function Signup({ history }) {
 	const [email, setEmail] = useState("");
@@ -150,66 +154,99 @@ function Signup({ history }) {
 		}
 	};
 	return (
-		<div className="whiteBackground">
+		<>
+			<div className="whiteBackground-Signup"></div>
 			{isLoad ? (
 				<Loading />
 			) : (
-				<div className="signUpModal">
-					<div className="signUpHeader">어서오고</div>
-					<form className="signUpContents" onSubmit={(e) => e.preventDefault()}>
-						<div className="emailContainer">
-							<span className="signupInput">이메일</span>
-							<input
-								className="signupInputValue"
-								onChange={onChangeEmail}
-								placeholder="이메일양식작성바람"
-							/>
-							{checkEmail ? <CheckCircleIcon /> : <CancelIcon />}
-							<button onClick={serverCheckEmail}>중복확인</button>
+				<div className="greyBackground-Signup">
+					<div className="signUpModalContainer">
+						<div className="signUpModal">
+							<img
+								className="signup-logo"
+								src={SignUp}
+								alt="SignUp"
+								width="270px"
+							></img>
+							<form
+								className="signUpContents"
+								onSubmit={(e) => e.preventDefault()}
+							>
+								<div className="emailContainer">
+									<input
+										className="signupInputValue"
+										onChange={onChangeEmail}
+										placeholder="이메일"
+									/>
+									{checkEmail ? (
+										<CheckCircleIcon className="checkIcon" />
+									) : (
+										<CancelIcon className="closeIcon" />
+									)}
+									<button className="checkButton" onClick={serverCheckEmail}>
+										<img
+											onClick={serverCheckEmail}
+											className="check"
+											src={check}
+											alt="check"
+											width="30px"
+										></img>
+									</button>
+								</div>
+								<div className="nicknameContainer">
+									<input
+										className="signupInputValue1"
+										onChange={onChangeNickname}
+										placeholder="별명"
+									/>
+									<button className="checkButton" onClick={serverCheckNickname}>
+										중복확인
+									</button>
+								</div>
+								<div className="passwordContainer">
+									<input
+										className="signupInputValue"
+										type="password"
+										onChange={onChangePass}
+										placeholder="8~12자리 숫자 영문 조합"
+									/>
+									{validPass ? (
+										<CheckCircleIcon className="checkIcon" />
+									) : (
+										<CancelIcon className="closeIcon" />
+									)}
+								</div>
+								<div className="checkPassContainer">
+									<input
+										className="signupInputValue"
+										type="password"
+										onChange={onChangeCheckPass}
+										placeholder="비밀번호 확인"
+									/>
+									{doubleCheckPass ? (
+										<CheckCircleIcon className="checkIcon" />
+									) : (
+										<CancelIcon className="closeIcon" />
+									)}
+								</div>
+								{/* <div className="goLoginBtn">
+									<Link to="/login">이미 아이디가 있냐능?</Link>
+								</div> */}
+
+								<div className="signUpBtn" onClick={handleSignup}>
+									<img src={submit} alt={xPng} width="100px"></img>
+								</div>
+								{errorMessage && <div>{errorMessage}</div>}
+							</form>
+
+							<div className="closeBtn" onClick={closeModal}>
+								<img src={xPng} alt={xPng} width="35px"></img>
+							</div>
 						</div>
-						<div class="nicknameContainer">
-							<span className="signupInput">별명</span>
-							<input
-								className="signupInputValue"
-								onChange={onChangeNickname}
-								placeholder="님별명무엇?"
-							/>
-							<button onClick={serverCheckNickname}>중복확인</button>
-						</div>
-						<div className="passwordContainer">
-							<span className="signupInput">비밀번호</span>
-							<input
-								className="signupInputValue"
-								type="password"
-								onChange={onChangePass}
-								placeholder="8자리이상 12자리 이하 숫자 영문 조합"
-							/>
-							{validPass ? <CheckCircleIcon /> : <CancelIcon />}
-						</div>
-						<div className="checkPassContainer">
-							<span className="signupInput">비밀번호 확인</span>
-							<input
-								className="signupInputValue"
-								type="password"
-								onChange={onChangeCheckPass}
-								placeholder="똑같이 입력하라능"
-							/>
-							{doubleCheckPass ? <CheckCircleIcon /> : <CancelIcon />}
-						</div>
-						<div className="goLoginBtn">
-							<Link to="/login">이미 아이디가 있냐능?</Link>
-						</div>
-						<button className="signUpBtn" type="submit" onClick={handleSignup}>
-							동료가 되자능
-						</button>
-						{errorMessage && <div>{errorMessage}</div>}
-					</form>
-					<button className="closeBtn" onClick={closeModal}>
-						닫기
-					</button>
+					</div>
 				</div>
 			)}
-		</div>
+		</>
 	);
 }
 export default withRouter(Signup);
