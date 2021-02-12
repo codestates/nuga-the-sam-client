@@ -33,11 +33,8 @@ function App() {
 			})
 			.then((res) => {
 				setUserInfo(res.data);
-				// console.log(res.data);
 			})
-			.catch((err) => {
-				console.log("무언가 잘못됐다.");
-			});
+			.catch((err) => {});
 	};
 
 	return (

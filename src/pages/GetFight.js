@@ -26,14 +26,9 @@ function GetFight(props) {
 				if (res.data.vote_where) {
 					setVoteWhere(res.data.vote_where);
 				}
-				console.log(
-					res.data,
-					"Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중",
-				);
 			});
 	}, [id, token]);
 
-	// console.log(fight);
 	/* 
 	이제 만들것
 	토큰 없을 때 클릭시 로그인 창으로 가게끔 하기
@@ -48,25 +43,19 @@ function GetFight(props) {
 		if (!props.accessToken) {
 			props.history.push("/login");
 		} else {
-			console.log("왼쪽에 투표하였습니다.");
 			let url = `https://s.nugathesam.com/fights/${id}/left_vote`;
 			axios
 				.put(url, null, { headers: { Authorization: `bearer ${token}` } })
 				.then((res) => {
-					console.log(
-						"leftClickleftClickleftClickleftClickleftClickleftClickleftClick",
-					);
 					const getUrl = `https://s.nugathesam.com/fights/${id}`;
 					axios
 						.get(getUrl, { headers: { Authorization: `bearer ${token}` } })
 						.then((res) => {
-							console.log(res.data);
 							setFight(res.data);
 							setVoteWhere("left");
 						});
 				})
 				.catch((err) => {
-					console.log(err.response.status);
 					const status = err.response.status;
 					if (status === 409) {
 						setAlreadyVote(true);
@@ -78,23 +67,19 @@ function GetFight(props) {
 		if (!props.accessToken) {
 			props.history.push("/login");
 		} else {
-			console.log("오른쪽에 투표하였습니다.");
 			let url = `https://s.nugathesam.com/fights/${id}/right_vote`;
 			axios
 				.put(url, null, { headers: { Authorization: `bearer ${token}` } })
 				.then((res) => {
-					console.log("rightclickrightclickrightclickrightclickrightclick");
 					const getUrl = `https://s.nugathesam.com/fights/${id}`;
 					axios
 						.get(getUrl, { headers: { Authorization: `bearer ${token}` } })
 						.then((res) => {
-							console.log(res.data);
 							setFight(res.data);
 							setVoteWhere("right");
 						});
 				})
 				.catch((err) => {
-					console.log(err.response);
 					const status = err.response.status;
 					if (status === 409) {
 						setAlreadyVote(true);

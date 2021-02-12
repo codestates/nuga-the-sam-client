@@ -5,7 +5,8 @@ import "../style/ViewComment.css";
 import ModifyComment from "../pages/ModifyComment.js";
 import DeleteComments from "./DeleteComments.js";
 import RecomandComment from "./RecomandComment.js";
-
+import comments from "../img/comments.png";
+import pleasecomment from "../img/pleasecomment.png";
 function ViewComment({
 	accessToken,
 	fightId,
@@ -43,9 +44,14 @@ function ViewComment({
 
 	return (
 		<div className="viewComment-container">
+			<div className="comments-png">
+				<img src={comments} alt={comments} width="180px"></img>
+			</div>
 			<div className="comment-container">
-				{!fight.comments ? (
-					<div>로딩중....</div>
+				{!fight.comments || fight.comments.length === 0 ? (
+					<div className="pleasecomment-png">
+						<img src={pleasecomment} alt={pleasecomment} width="500px"></img>
+					</div>
 				) : (
 					fight.comments.map((fights) => {
 						if (fights.side === "left") {

@@ -23,17 +23,14 @@ function Fights({ accessToken }) {
 	//* 카테고리 클릭시 카테고리 이름 저장
 	const handleFightsCategoty = (e) => {
 		setCheckedCategory(e.target.value);
-		console.log(e.target.value);
 	};
 	//* 왼쪽 제목 저장
 	const handleLeftFights = (e) => {
 		setLeftFights(e.target.value);
-		console.log(leftFights);
 	};
 	//* 오른쪽 제목 저장
 	const handleRightFights = (e) => {
 		setRightFights(e.target.value);
-		console.log(rightFights);
 	};
 
 	//* 등록 버튼 클릭시

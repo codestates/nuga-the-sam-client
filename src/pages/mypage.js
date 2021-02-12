@@ -20,7 +20,6 @@ function MyPage({ userInfo, accessToken, setUserInfo, history }) {
 	const GoLogin = () => {
 		history.push("/login");
 	};
-	console.log(userInfo);
 
 	useEffect(() => {
 		axios
@@ -29,12 +28,9 @@ function MyPage({ userInfo, accessToken, setUserInfo, history }) {
 			})
 			.then((res) => {
 				setUserInfo(res.data);
-				// console.log(res.data);
 			})
 
-			.catch((err) => {
-				console.log("무언가 잘못됐다.");
-			});
+			.catch((err) => {});
 	}, [accessToken, setUserInfo]);
 	return (
 		<div>

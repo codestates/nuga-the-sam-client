@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, withRouter } from "react-router-dom";
 // import Loading from "../components/Loading";
 import "../style/Login.css";
-import googleLogin from "../img/googleLogin2.png";
+import googleLogin from "../img/RealgoogleLogin.png";
 import nugatheSam from "../img/nugatheSam.png";
 import LoadingPng from "../img/Loading.png";
 import LoginPng from "../img/Login.png";
@@ -17,7 +17,6 @@ function Login({ loginHandler, issueAccessToken, history }) {
 	const [isLoad, setIsLoad] = useState(false);
 	const onChangeEmail = (e) => {
 		setEmail(e.target.value);
-		console.log(e.target.value);
 	};
 
 	const GOOGLE_LOGIN_URL = `https://accounts.google.com/o/oauth2/v2/auth?scope=https://www.googleapis.com/auth/userinfo.profile&access_type=offline&include_granted_scopes=true&state=state_parameter_passthrough_value&
@@ -31,7 +30,6 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 		let url = "https://s.nugathesam.com/users/social";
 		setIsLoad(true);
 		axios.post(url, { authorizationCode }).then((res) => {
-			// console.log(res.data);
 			loginHandler(true);
 			issueAccessToken(res.data.token);
 			setIsLoad(false);
@@ -42,19 +40,17 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 	useEffect(() => {
 		const url = new URL(window.location.href);
 		const authorizationCode = url.searchParams.get("code");
-		// console.log(authorizationCode);
+
 		if (authorizationCode) {
 			getAccessToken(authorizationCode);
 		}
 	});
 
 	const onChangePass = (e) => {
-		console.log(e.target.value);
 		setPassword(e.target.value);
 	};
 
 	const handleKeyPress = (e) => {
-		console.log(e.key);
 		if (e.key === "Enter") {
 			loginRequestHandler();
 		}
@@ -66,7 +62,6 @@ redirect_uri=http://localhost:3000/login&response_type=code&client_id=1034829690
 		axios
 			.post(url, { email: email, password: password })
 			.then((res) => {
-				console.log(res);
 				if (errorMessage) {
 					setError("");
 					loginHandler(true);
