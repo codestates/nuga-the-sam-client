@@ -20,6 +20,8 @@ function Signup({ history }) {
 	const [checkEmail, setCheckEmail] = useState(false);
 	//사용가능한 패스워드
 	const [validPass, setValidPass] = useState(false);
+	//사용가능한 별명
+	const [validNick, setValidNick] = useState(false);
 	// 이메일중복확인
 	const [reviewEmail, setReviewEmail] = useState(false);
 	//닉네임중복확인
@@ -35,6 +37,7 @@ function Signup({ history }) {
 	};
 	const onChangeNickname = (e) => {
 		setNickname(e.target.value);
+		setValidNick(validNickCheck(e.target.value));
 		setReviewNickname(false);
 	};
 	const onChangePass = (e) => {
@@ -56,6 +59,13 @@ function Signup({ history }) {
 	const validPassCheck = (pass) => {
 		let regExp = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,12}$/;
 		return regExp.test(pass);
+	};
+	const validNickCheck = (nickname) => {
+		if (2 <= nickname.length && nickname.length <= 8) {
+			return true;
+		} else {
+			return false;
+		}
 	};
 	const passCheck = (password, checkPass) => {
 		if (password === checkPass) {
@@ -184,21 +194,20 @@ function Signup({ history }) {
 										<CancelIcon className="closeIcon" />
 									)}
 									<button className="checkButton" onClick={serverCheckEmail}>
-										<img
-											onClick={serverCheckEmail}
-											className="check"
-											src={check}
-											alt="check"
-											width="30px"
-										></img>
+										중복확인
 									</button>
 								</div>
 								<div className="nicknameContainer">
 									<input
-										className="signupInputValue1"
+										className="signupInputValue"
 										onChange={onChangeNickname}
-										placeholder="별명"
+										placeholder="별명은 2 ~ 8자리"
 									/>
+									{validNick ? (
+										<CheckCircleIcon className="checkIcon" />
+									) : (
+										<CancelIcon className="closeIcon" />
+									)}
 									<button className="checkButton" onClick={serverCheckNickname}>
 										중복확인
 									</button>

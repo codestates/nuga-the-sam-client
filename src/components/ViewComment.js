@@ -42,7 +42,7 @@ function ViewComment({
 	};
 
 	return (
-		<div>
+		<div className="viewComment-container">
 			<div className="comment-container">
 				{!fight.comments ? (
 					<div>로딩중....</div>
@@ -52,28 +52,18 @@ function ViewComment({
 							if (fights.user.nickname === userInfo.nickname) {
 								return (
 									<div className="comment-name-left" key={fights.id}>
-										<div className="comment-nickname-left ">
+										<span className="comment-nickname-left ">
 											{fights.user.nickname}
-										</div>
+										</span>
 										<span className="comment-time-left">
 											{fights.createdAt.slice(0, 10)}
 											<span>&nbsp;&nbsp;</span>
 											{fights.createdAt.slice(11, 19)}
 										</span>
-										<div className="comment-text-left">{fights.text}</div>
-										<div className="comment-like-left ">
-											{fights.like_count}
-										</div>
-										<>
-											<RecomandComment
-												setisModify={setisModify}
-												fightId={fightId}
-												commentId={fights.id}
-												accessToken={accessToken}
-												setFight={setFight}
-											></RecomandComment>
-										</>
-
+										<span className="comment-text-left">{fights.text}</span>
+										<span className="comment-like-left ">
+											👍🏻{fights.like_count}
+										</span>
 										<button
 											className="comment-modify-left"
 											onClick={(e) => modifyCommentButton(fights.id)}
@@ -88,24 +78,40 @@ function ViewComment({
 											setFight={setFight}
 											setLoad={setLoad}
 										></DeleteComments>
+
+										<>
+											<RecomandComment
+												setisModify={setisModify}
+												fightId={fightId}
+												commentId={fights.id}
+												accessToken={accessToken}
+												setFight={setFight}
+											></RecomandComment>
+										</>
 									</div>
 								);
 							} else {
 								return (
 									<div className="comment-name-left" key={fights.id}>
-										<div className="comment-nickname-left ">
+										<span className="comment-nickname-left ">
 											{fights.user.nickname}
-										</div>
+										</span>
 										<span className="comment-time-left">
 											{fights.createdAt.slice(0, 10)}
 											<span>&nbsp;&nbsp;</span>
 											{fights.createdAt.slice(11, 19)}
 										</span>
-										<div className="comment-text-left">{fights.text}</div>
-										<div className="comment-like-left ">
-											{fights.like_count}
-										</div>
-										<button className="comment-votes-left">추천</button>
+										<span className="comment-text-left">{fights.text}</span>
+										<span className="comment-like-left ">
+											👍🏻{fights.like_count}
+										</span>
+										<RecomandComment
+											setisModify={setisModify}
+											fightId={fightId}
+											commentId={fights.id}
+											accessToken={accessToken}
+											setFight={setFight}
+										></RecomandComment>
 									</div>
 								);
 							}
@@ -113,18 +119,18 @@ function ViewComment({
 							if (fights.user.nickname === userInfo.nickname) {
 								return (
 									<div className="comment-name-right" key={fights.id}>
-										<div className="comment-nickname-right ">
+										<span className="comment-nickname-right ">
 											{fights.user.nickname}
-										</div>
+										</span>
 										<span className="comment-time-right">
 											{fights.createdAt.slice(0, 10)}
 											<span>&nbsp;&nbsp;</span>
 											{fights.createdAt.slice(11, 19)}
 										</span>
-										<div className="comment-text-right">{fights.text}</div>
-										<div className="comment-like-right">
-											{fights.like_count}
-										</div>
+										<span className="comment-text-right">{fights.text}</span>
+										<span className="comment-like-right">
+											👍🏻{fights.like_count}
+										</span>
 										<>
 											<RecomandComment
 												setisModify={setisModify}
@@ -140,19 +146,6 @@ function ViewComment({
 										>
 											수정
 										</button>
-										{/* {!isModify ? (
-											<div></div>
-										) : (
-											<div>
-												<ModifyComment
-													setisModify={setisModify}
-													fightId={fightId}
-													commentId={fights.id}
-													accessToken={accessToken}
-													setFight={setFight}
-												></ModifyComment>
-											</div>
-										)} */}
 										<DeleteComments
 											commentId={fights.id}
 											fightId={fightId}
@@ -165,19 +158,25 @@ function ViewComment({
 							} else {
 								return (
 									<div className="comment-name-right" key={fights.id}>
-										<div className="comment-nickname-right ">
+										<span className="comment-nickname-right ">
 											{fights.user.nickname}
-										</div>
+										</span>
 										<span className="comment-time-right">
 											{fights.createdAt.slice(0, 10)}
 											<span>&nbsp;&nbsp;</span>
 											{fights.createdAt.slice(11, 19)}
 										</span>
-										<div className="comment-text-right">{fights.text}</div>
-										<div className="comment-like-right">
-											{fights.like_count}
-										</div>
-										<button className="comment-votes-right ">추천</button>
+										<span className="comment-text-right">{fights.text}</span>
+										<span className="comment-like-right">
+											👍🏻{fights.like_count}
+										</span>
+										<RecomandComment
+											setisModify={setisModify}
+											fightId={fightId}
+											commentId={fights.id}
+											accessToken={accessToken}
+											setFight={setFight}
+										></RecomandComment>
 									</div>
 								);
 							}

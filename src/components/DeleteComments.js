@@ -31,6 +31,7 @@ function DeleteComments({
 			onClick={() => {
 				deleteCommentButton();
 			}}
+			className="deleteBtn"
 		>
 			삭제
 		</button>

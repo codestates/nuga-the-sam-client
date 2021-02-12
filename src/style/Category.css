@@ -1,15 +1,21 @@
 #category-list-container {
 	display: flex;
-	margin-left: 10%;
+
 	width: 10%;
 	height: calc(100vh - 4rem);
 	position: absolute;
 	margin-top: 30px;
+	margin-left: 10%;
+	flex-direction: column;
 }
 
 #category-list-body {
 	display: table-cell;
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 
 #category-list-title {

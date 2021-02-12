@@ -4,12 +4,14 @@ import { withRouter } from "react-router-dom";
 import Loading from "../components/Loading";
 import "../style/GetFight.css";
 import ViewComment from "../components/ViewComment";
+import vs_eng from "../img/vs_eng.png";
 
 function GetFight(props) {
 	const [fight, setFight] = useState({});
 	const [isLoad, setLoad] = useState(true);
 	const [alreadyVote, setAlreadyVote] = useState(false);
 	const id = props.match.params.id;
+	const [voteWhere, setVoteWhere] = useState("");
 
 	const token = props.accessToken;
 	useEffect(() => {
@@ -21,6 +23,9 @@ function GetFight(props) {
 			.then((res) => {
 				setFight(res.data);
 				setLoad(false);
+				if (res.data.vote_where) {
+					setVoteWhere(res.data.vote_where);
+				}
 				console.log(
 					res.data,
 					"Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중Get요청중",
@@ -57,6 +62,7 @@ function GetFight(props) {
 						.then((res) => {
 							console.log(res.data);
 							setFight(res.data);
+							setVoteWhere("left");
 						});
 				})
 				.catch((err) => {
@@ -84,6 +90,7 @@ function GetFight(props) {
 						.then((res) => {
 							console.log(res.data);
 							setFight(res.data);
+							setVoteWhere("right");
 						});
 				})
 				.catch((err) => {
@@ -101,11 +108,11 @@ function GetFight(props) {
 	};
 
 	return (
-		<div>
+		<div className="daddyFightContainer">
 			{isLoad ? (
 				<Loading />
 			) : (
-				<div>
+				<div className="getfightContainer">
 					{alreadyVote && (
 						<div className="alreadyVoteBox">
 							<div>중복투표는 불가 합니다</div>
@@ -115,15 +122,36 @@ function GetFight(props) {
 						</div>
 					)}
 					<div className="fightContainer">
-						<div className="leftContainer" onClick={handleLeftVoteClick}>
-							<div className="leftFight">{fight.left}</div>
-							<div className="leftVote">{fight.left_vote_count}</div>
+						{voteWhere === "left" ? (
+							<div className="votedLeftContainer" onClick={handleLeftVoteClick}>
+								<div className="votedLeftFight">{fight.left}</div>
+								<div className="votedLeftVote">👍🏻 {fight.left_vote_count}</div>
+							</div>
+						) : (
+							<div className="leftContainer" onClick={handleLeftVoteClick}>
+								<div className="leftFight">{fight.left}</div>
+								<div className="leftVote">👍🏻 {fight.left_vote_count}</div>
+							</div>
+						)}
+						<div className="vs">
+							<img src={vs_eng} alt="vs" width="90px" />
 						</div>
-						<div className="vs">vs</div>
-						<div className="rightContainer" onClick={handleRightVoteClick}>
-							<div className="rightFight">{fight.right}</div>
-							<div className="rightVote">{fight.right_vote_count}</div>
-						</div>
+						{voteWhere === "right" ? (
+							<div
+								className="votedRightContainer"
+								onClick={handleLeftVoteClick}
+							>
+								<div className="votedRightFight">{fight.right}</div>
+								<div className="votedRightVote">
+									👍🏻 {fight.right_vote_count}
+								</div>
+							</div>
+						) : (
+							<div className="rightContainer" onClick={handleRightVoteClick}>
+								<div className="rightFight">{fight.right}</div>
+								<div className="rightVote">👍🏻 {fight.right_vote_count}</div>
+							</div>
+						)}
 					</div>
 				</div>
 			)}

@@ -9,7 +9,7 @@
 
 .mypage-userInfo-body {
 	height: 100%;
-	overflow: scroll;
+	margin-top: 25px;
 }
 .nickname {
 	float: left;
@@ -37,7 +37,6 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	overflow: scroll;
 	margin-top: 30px;
 }
 .myfight-title {
@@ -45,7 +44,7 @@
 .mypage-myfights-body {
 	width: 50%;
 	height: 370px;
-	overflow: scroll;
+	overflow-y: scroll;
 	top: 50px;
 }
 
@@ -148,6 +147,10 @@
 	color: black;
 	margin-top: 5px;
 	border-bottom: solid black 1px;
+}
+.mypage-comments-title:hover {
+	color: purple;
+	font-weight: bold;
 }
 
 .mypage-comments-name {
