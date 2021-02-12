@@ -4,6 +4,8 @@ body {
 	text-align: center;
 	height: 100vh;
 	max-width: 2000px;
+	box-sizing: border-box;
+	overflow-x: hidden;
 }
 #Master body {
 	margin: 0;

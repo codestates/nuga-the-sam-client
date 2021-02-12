@@ -81,6 +81,7 @@ textarea::placeholder {
 	font-size: 20px;
 	font-weight: bold;
 	text-align: center;
+	justify-content: center;
 	padding-top: 63px;
 }
 #fights-post-category-container {

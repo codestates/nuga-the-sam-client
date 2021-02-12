@@ -4,7 +4,8 @@ import "../style/ModalFight.css";
 
 function ModalFight({ setcheckSendModal, leftFights, rightFights }) {
 	return (
-		<>
+		<div>
+			<div className="opacityBackGround"></div>
 			<div className="ModalFight">
 				<div className="ModalFight-body">
 					<div className="ModalFight-title">
@@ -24,7 +25,7 @@ function ModalFight({ setcheckSendModal, leftFights, rightFights }) {
 					</Link>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
 

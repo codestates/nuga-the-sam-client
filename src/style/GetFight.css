@@ -1,8 +1,116 @@
+.getfightContainer {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.fightContainer {
+	width: 60%;
+	height: 280px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .leftContainer {
 	cursor: pointer;
+	width: 40%;
+	height: 55%;
+	background: #c02a2a;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.2s ease-in-out;
+}
+.leftContainer:hover {
+	background: #ff6161;
+	transform: scale(1.05);
+}
+.leftFight {
+	font-size: 30px;
+	font-weight: bold;
+	color: black;
+}
+.leftVote {
+	margin-top: 15px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.votedLeftContainer {
+	cursor: pointer;
+	width: 40%;
+	height: 55%;
+	background: #ff6161;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 6px;
+	border: 5px solid #ef0888;
+}
+.votedLeftFight {
+	font-size: 40px;
+	font-weight: bold;
+	color: black;
+}
+.votedLeftVote {
+	margin-top: 15px;
+	font-size: 25px;
+	font-weight: bold;
+}
+.vs {
+	margin: 13px;
 }
 .rightContainer {
 	cursor: pointer;
+	width: 40%;
+	height: 55%;
+	background: #2550d1;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	transition: all 0.2s ease-in-out;
+}
+.rightContainer:hover {
+	background: #00a9fe;
+	transform: scale(1.05);
+}
+.rightFight {
+	font-size: 30px;
+	font-weight: bold;
+	color: black;
+}
+.rightVote {
+	margin-top: 15px;
+	font-size: 20px;
+	font-weight: bold;
+}
+.votedRightContainer {
+	cursor: pointer;
+	width: 40%;
+	height: 55%;
+	background: #00a9fe;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 6px;
+	border: 5px solid blue;
+}
+.votedRightFight {
+	font-size: 40px;
+	font-weight: bold;
+	color: black;
+}
+.votedRightVote {
+	margin-top: 15px;
+	font-size: 20px;
+	font-weight: bold;
 }
 .alreadyVoteBox {
 	position: fixed;

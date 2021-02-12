@@ -48,18 +48,18 @@ function ModifyComment({
 
 	return (
 		<div className="ModifyComment-container">
-			<div className="ModifyComment-body">
-				<div>
-					<input
-						className="ModifyCommentBox"
-						type="text"
-						placeholder="댓글 수정!"
-						value={Comment}
-						onChange={(e) => handleSetComment(e)}
-					></input>
-					<button onClick={() => ModifyComment()}> 확인</button>
-				</div>
-			</div>
+			<input
+				className="ModifyCommentBox"
+				type="textarea"
+				placeholder="수정할 댓글을 입력하세요."
+				value={Comment}
+				onChange={(e) => handleSetComment(e)}
+			></input>
+
+			<button className="modifyBtn" onClick={() => ModifyComment()}>
+				{" "}
+				확인
+			</button>
 		</div>
 	);
 }

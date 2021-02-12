@@ -58,7 +58,7 @@ function Home({ accessToken, history, handleNewFightClick }) {
 	return (
 		<>
 			{!fights ? (
-				<>
+				<div className="mainContainer">
 					<Loading></Loading>
 					<MakeFights category={CategoryData} />
 					<Category
@@ -66,26 +66,30 @@ function Home({ accessToken, history, handleNewFightClick }) {
 						handleCategoryClick={handleCategoryClick}
 						handleAllCategoryClick={handleAllCategoryClick}
 					/>
-					<HotFights hotfights={hotfights} />
-					<NewFights
-						fights={fights}
-						handleNewFightClick={handleNewFightClick}
-					/>
-				</>
+					<div className="mainFightsContainer">
+						<HotFights hotfights={hotfights} />
+						<NewFights
+							fights={fights}
+							handleNewFightClick={handleNewFightClick}
+						/>
+					</div>
+				</div>
 			) : (
-				<>
+				<div className="mainContainer">
 					<MakeFights category={CategoryData} />
 					<Category
 						category={CategoryData}
 						handleCategoryClick={handleCategoryClick}
 						handleAllCategoryClick={handleAllCategoryClick}
 					/>
-					<HotFights hotfights={hotfights} />
-					<NewFights
-						fights={fights}
-						handleNewFightClick={handleNewFightClick}
-					/>
-				</>
+					<div className="mainFightsContainer">
+						<HotFights hotfights={hotfights} />
+						<NewFights
+							fights={fights}
+							handleNewFightClick={handleNewFightClick}
+						/>
+					</div>
+				</div>
 			)}
 		</>
 	);

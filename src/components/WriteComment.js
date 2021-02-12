@@ -23,6 +23,7 @@ function WriteComment({
 				)
 				.then((res) => {
 					viewCommnetHandler();
+					setWriteComment("");
 				})
 				.catch((err) => {
 					console.log(err);
@@ -33,18 +34,18 @@ function WriteComment({
 	};
 
 	return (
-		<div>
-			<div>
-				<input
-					type="textarea"
-					placeholder="댓글을 입력해보세요"
-					value={writeComment}
-					onChange={(e) => {
-						setWriteComment(e.target.value);
-					}}
-				></input>
-				<button onClick={() => submitComment()}>작성</button>
-			</div>
+		<div className="WriteContainer">
+			<input
+				placeholder="댓글을 입력해보세요."
+				value={writeComment}
+				onChange={(e) => {
+					setWriteComment(e.target.value);
+				}}
+				className="writeTextarea"
+			></input>
+			<button className="writeSubmit" onClick={() => submitComment()}>
+				작성
+			</button>
 		</div>
 	);
 }

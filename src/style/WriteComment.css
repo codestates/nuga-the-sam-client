@@ -1,0 +1,67 @@
+.WriteContainer {
+	margin-top: 30px;
+	border-top: 2px solid #e0e0e0;
+	width: 57%;
+	height: 130px;
+	margin-bottom: 30px;
+}
+.writeTextarea {
+	margin-top: 15px;
+	margin-left: 10px;
+	width: 70%;
+	height: 60%;
+	display: inline-block;
+	padding: 10px;
+	text-align: start;
+	border: 1px solid #aeaeae;
+	outline: none;
+}
+.writeSubmit {
+	display: inline-block;
+	margin-left: 10px;
+	border: 1px solid #aeaeae;
+	font-size: 20px;
+	font-weight: bold;
+	background: none;
+	padding: 10px;
+	margin-left: 30px;
+	transition: all 0.2s ease-in-out;
+}
+
+.writeSubmit:hover {
+	background: #707070;
+	color: #ffffff;
+}
+.ModifyComment-container {
+	margin-top: 10px;
+	border-top: 2px solid #e0e0e0;
+	width: 57%;
+	height: 130px;
+}
+
+.ModifyCommentBox {
+	margin-top: 15px;
+	margin-left: 10px;
+	width: 70%;
+	height: 60%;
+	display: inline-block;
+	padding: 10px;
+	text-align: start;
+	border: 1px solid #aeaeae;
+	outline: none;
+}
+.modifyBtn {
+	display: inline-block;
+	margin-left: 10px;
+	border: 1px solid #aeaeae;
+	font-size: 20px;
+	font-weight: bold;
+	background: none;
+	padding: 10px;
+	margin-left: 30px;
+	transition: all 0.2s ease-in-out;
+}
+.modifyBtn:hover {
+	background: #707070;
+	color: #ffffff;
+}

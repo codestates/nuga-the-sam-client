@@ -7,7 +7,7 @@
 .loginModal {
 	display: flex;
 	flex-direction: column;
-	border: solid black 2px;
+	border: solid black 5px;
 	width: 500px;
 	height: 550px;
 	background: #fdf6f6;

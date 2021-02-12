@@ -29,6 +29,7 @@ function RecomandComments({
 
 	return (
 		<button
+			className="comments-recommand-btn"
 			onClick={() => {
 				recomandeCommentButton();
 			}}
