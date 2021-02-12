@@ -145,7 +145,6 @@ function Signup({ history }) {
 					}
 				})
 				.catch((err) => {
-					console.log(err);
 					setError("에러에러에러");
 					setLoad(false);
 				});

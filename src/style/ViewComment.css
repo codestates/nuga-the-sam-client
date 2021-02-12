@@ -7,12 +7,14 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	height: 140vh;
+	overflow-y: scroll;
 }
 .comment-container {
 	width: 55%;
 	border-top: 2px solid #e0e0e0;
 	padding-top: 20px;
-	height: 580px;
+	height: 100%;
 	overflow-y: scroll;
 	overflow-x: hidden;
 }
@@ -149,4 +151,12 @@
 .comments-recommand-btn:hover {
 	color: purple;
 	font-weight: bold;
+}
+
+.comments-png {
+	margin-bottom: 40px;
+}
+
+.pleasecomment-png {
+	margin-top: 70px;
 }

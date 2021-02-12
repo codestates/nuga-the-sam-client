@@ -18,15 +18,6 @@ function ModifyComment({
 	const handleSetComment = (e) => {
 		setcommentId(fight);
 		setComment(e.target.value);
-		console.log(
-			realCommentId,
-			"코멘트 아이디",
-			fightId,
-			"파이트 아이디",
-			accessToken,
-			"에세스 토큰",
-			commentId,
-		);
 	};
 	const ModifyComment = () => {
 		axios

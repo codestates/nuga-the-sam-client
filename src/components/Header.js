@@ -3,8 +3,6 @@ import "../style/Header.css";
 import { Link, withRouter } from "react-router-dom";
 import nugatheSam from "../img/nugatheSam.png";
 function Header({ isLogin, logoutHandler, history }) {
-	// console.log(isLogin);
-
 	const handleClickLogout = () => {
 		logoutHandler();
 		history.push("/");

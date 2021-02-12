@@ -9,7 +9,6 @@ function RecomandComments({
 	setLoad,
 }) {
 	const recomandeCommentButton = () => {
-		console.log(fightId, commentId, accessToken, "추천sss");
 		axios
 			.put(
 				`https://s.nugathesam.com/fights/${fightId}/comments/${commentId}/like`,

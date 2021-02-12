@@ -46,7 +46,6 @@ function ChangeNickNameModal({
 
 					//* 성공적으로 변경시 로딩 모달창을 닫음
 					.then((res) => {
-						console.log(res);
 						setisLodingnewNickNmae(false);
 						setisChangeNick(false);
 						axios

@@ -26,7 +26,7 @@ function WriteComment({
 					setWriteComment("");
 				})
 				.catch((err) => {
-					console.log(err);
+					// console.log(err);
 				});
 		} else {
 			alert("투표 먼저 하세요!");
