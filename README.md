@@ -1,3 +1,2 @@
-# 누가 더 쎔?
+![](https://img.shields.io/badge/PROJECT-nugathesam-f20505?style=for-the-badge)
 
-우열을 가리기가 힘들어요;;;;
