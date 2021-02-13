@@ -36,7 +36,7 @@
 
 ![](https://img.shields.io/badge/backend-express-ffa040?style=for-the-badge&logo=express)
 
-![](https://img.shields.io/badge/backend-sequalize-0d47a1?style=for-the-badge)
+![](https://img.shields.io/badge/backend-sequelize-0d47a1?style=for-the-badge&logo=sequelize)
 
 ![](https://img.shields.io/badge/backend-mysql-00acc1?style=for-the-badge&logo=mysql)
 
