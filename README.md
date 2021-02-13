@@ -2,7 +2,7 @@
 
 # 누가 더 쎔? 🥊 
 
-<img src="https://i.imgur.com/JUA4WeK.png" title="source: imgur.com" width="300px"  />
+<img src="https://i.imgur.com/wpymxWm.png" title="source: imgur.com" width="300" />
 
 ### 🔹 부먹 vs 찍먹 
 
